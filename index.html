@@ -580,35 +580,50 @@
     .reasons__grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 24px;
     }
     .reason-item {
       background-color: var(--white);
       border-radius: var(--radius);
-      padding: 28px 24px;
       box-shadow: var(--shadow);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      align-items: stretch;
       transition: transform 0.2s ease;
     }
-    .reason-item:hover { transform: translateY(-2px); }
+    .reason-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .reason-item__img {
+      overflow: hidden;
+    }
+    .reason-item__img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .reason-item__content {
+      padding: 28px 24px;
+    }
     .reason-item__num {
-      flex-shrink: 0;
-      width: 44px; height: 44px;
+      display: inline-flex;
+      width: 40px; height: 40px;
       background-color: var(--accent-light);
       border: 2px solid var(--accent);
       color: var(--accent);
       border-radius: 50%;
-      display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 700;
       font-size: 13px;
+      margin-bottom: 14px;
     }
-    .reason-item__body h3 { margin-bottom: 6px; }
-    .reason-item__body p  { font-size: 15px; color: var(--text-sub); line-height: 1.8; }
-    @media (max-width: 600px) { .reasons__grid { grid-template-columns: 1fr; } }
+    .reason-item__body h3 { margin-bottom: 10px; font-size: clamp(17px, 2vw, 20px); }
+    .reason-item__body p  { font-size: 15px; color: var(--text-sub); line-height: 1.85; }
+    @media (max-width: 900px) { .reasons__grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) {
+      .reason-item { grid-template-columns: 1fr; }
+      .reason-item__img { height: 200px; }
+    }
 
     /* ============================
        7. コース一覧（コースマップ）
@@ -1172,31 +1187,43 @@
     </div>
     <div class="reasons__grid">
       <div class="reason-item">
-        <div class="reason-item__num">01</div>
-        <div class="reason-item__body">
-          <h3>野田さんから直接学んだ講師が教える</h3>
-          <p>ここに野田さんとの関係性・学んだ内容について書いてください。師匠の教えを実践ベースで伝えます。</p>
+        <div class="reason-item__img"><img src="riyuu/01.png" alt="野田さんから直接学んだ講師が教える"></div>
+        <div class="reason-item__content">
+          <div class="reason-item__num">01</div>
+          <div class="reason-item__body">
+            <h3>野田さんから直接学んだ講師が教える</h3>
+            <p>ここに野田さんとの関係性・学んだ内容について書いてください。師匠の教えを実践ベースで伝えます。</p>
+          </div>
         </div>
       </div>
       <div class="reason-item">
-        <div class="reason-item__num">02</div>
-        <div class="reason-item__body">
-          <h3>各分野の専門家が担当する</h3>
-          <p>デザイン・マーケティング・AI活用、それぞれの専門家が担当。浅く広くではなく、深く実践的に学べる。</p>
+        <div class="reason-item__img"><img src="riyuu/02.png" alt="各分野の専門家が担当する"></div>
+        <div class="reason-item__content">
+          <div class="reason-item__num">02</div>
+          <div class="reason-item__body">
+            <h3>各分野の専門家が担当する</h3>
+            <p>デザイン・マーケティング・AI活用、それぞれの専門家が担当。浅く広くではなく、深く実践的に学べる。</p>
+          </div>
         </div>
       </div>
       <div class="reason-item">
-        <div class="reason-item__num">03</div>
-        <div class="reason-item__body">
-          <h3>マーケティングを本場で学んだ人が教える</h3>
-          <p>実際に売上を立ててきた人間が教えるから、「理論だけ」じゃない。現場で使えるノウハウをそのまま渡します。</p>
+        <div class="reason-item__img"><img src="riyuu/03.png" alt="マーケティングを本場で学んだ人が教える"></div>
+        <div class="reason-item__content">
+          <div class="reason-item__num">03</div>
+          <div class="reason-item__body">
+            <h3>マーケティングを本場で学んだ人が教える</h3>
+            <p>実際に売上を立ててきた人間が教えるから、「理論だけ」じゃない。現場で使えるノウハウをそのまま渡します。</p>
+          </div>
         </div>
       </div>
       <div class="reason-item">
-        <div class="reason-item__num">04</div>
-        <div class="reason-item__body">
-          <h3>実際に売上を立てている講師が担当</h3>
-          <p>全講師が現役で事業を動かしている。学んだことをすぐ自分のビジネスに反映できる、生きた知識です。</p>
+        <div class="reason-item__img"><img src="riyuu/04.png" alt="実際に売上を立てている講師が担当"></div>
+        <div class="reason-item__content">
+          <div class="reason-item__num">04</div>
+          <div class="reason-item__body">
+            <h3>実際に売上を立てている講師が担当</h3>
+            <p>全講師が現役で事業を動かしている。学んだことをすぐ自分のビジネスに反映できる、生きた知識です。</p>
+          </div>
         </div>
       </div>
     </div>
