@@ -659,54 +659,138 @@
        8. ビジョン
     ============================ */
     .vision {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-      padding: 80px 0;
+      position: relative;
+      padding: 100px 0;
+      overflow: hidden;
     }
-    .vision__body { max-width: 640px; margin: 0 auto; text-align: center; }
+    .vision__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .vision__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .vision__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.80);
+      z-index: 1;
+    }
+    .vision__body {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
     .vision__label {
       display: inline-block;
       font-size: 11px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.65);
+      color: var(--accent-dark);
       font-weight: 700;
       margin-bottom: 12px;
     }
-    .vision h2 { color: var(--white); }
-    .vision__desc { margin-top: 20px; font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.85); }
-    .vision__list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 32px;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
+    .vision h2 { color: var(--text); }
+    .vision__desc {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--text-sub);
     }
-    .vision__list li {
-      background: rgba(255,255,255,0.15);
-      border-radius: var(--radius-sm);
-      padding: 14px 20px;
+    .vision__circles {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .vision__circle {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      background: var(--accent);
       display: flex;
       align-items: center;
-      gap: 14px;
-      font-size: 15px;
-      color: var(--white);
-      text-align: left;
-      line-height: 1.7;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.6;
+      box-shadow: 0 6px 20px rgba(90,191,191,0.3);
     }
-    .vision__list li::before {
-      content: '';
-      display: block;
-      flex-shrink: 0;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.85);
+    @media (max-width: 600px) {
+      .vision__circle { width: 120px; height: 120px; font-size: 12px; padding: 14px; }
+      .vision__circles { gap: 16px; }
     }
 
     /* ============================
-       9. CTA
+       9. FAQ
+    ============================ */
+    .faq { background-color: var(--bg); }
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq__item { border-bottom: 1px solid #ece8e8; }
+    .faq__item:first-child { border-top: 1px solid #ece8e8; }
+    .faq__q {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 4px;
+      cursor: pointer;
+      gap: 16px;
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+    }
+    .faq__q-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.65;
+    }
+    .faq__q-text::before {
+      content: 'Q.  ';
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .faq__icon {
+      flex-shrink: 0;
+      width: 26px; height: 26px;
+      border: 1.5px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 20px;
+      line-height: 0;
+      transition: transform 0.3s ease;
+    }
+    .faq__item.open .faq__icon { transform: rotate(45deg); }
+    .faq__a {
+      display: none;
+      padding: 0 4px 22px 28px;
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+    .faq__item.open .faq__a { display: block; }
+
+    /* ============================
+       10. CTA
     ============================ */
     .cta { background-color: var(--bg-alt); text-align: center; }
     .cta__inner {
@@ -1125,24 +1209,81 @@
 
 <!-- 8. ビジョン -->
 <section class="vision">
+  <div class="vision__bg">
+    <img src="menber/yumi.png" alt="">
+  </div>
+  <div class="vision__overlay"></div>
   <div class="container">
-    <div class="vision__body">
+    <div class="vision__body fade-up">
       <span class="vision__label">VISION</span>
       <h2>女性起業家が、<br>好きと得意で働ける世界へ</h2>
       <p class="vision__desc">
         AIを学ぶことが目的ではない。<br>
         AIを使って、自分らしい働き方を叶えるための場所です。
       </p>
-      <ul class="vision__list">
-        <li>スキルを身につけて仕事につなげる</li>
-        <li>仲間と支え合いながら成長する</li>
-        <li>一人で抱えずに、進み続けられる</li>
-      </ul>
+      <div class="vision__circles">
+        <div class="vision__circle">スキルを身につけて<br>仕事につなげる</div>
+        <div class="vision__circle">仲間と<br>支え合いながら<br>成長する</div>
+        <div class="vision__circle">一人で抱えずに、<br>進み続けられる</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- 9. CTA -->
+<!-- 9. FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-label">FAQ</span>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq__list fade-up">
+
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          <span class="faq__q-text">初心者でもできますか？また、資格など必要ですか？</span>
+          <span class="faq__icon">+</span>
+        </button>
+        <p class="faq__a">はい、完全初心者の方でも安心してご参加いただけます。AIに触れたことがない方でも、基礎からていねいに学べる構成になっています。資格は一切不要です。</p>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          <span class="faq__q-text">無料体験入学はいつでも受け付けていますか？</span>
+          <span class="faq__icon">+</span>
+        </button>
+        <p class="faq__a">説明会は毎月開催しています。LINEにご登録いただくと、最新の開催日程をいち早くご案内します。</p>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          <span class="faq__q-text">無料体験入学ではどれくらい時間を確保しておくと良いですか？</span>
+          <span class="faq__icon">+</span>
+        </button>
+        <p class="faq__a">約60〜90分をご確保ください。スクールの内容説明・受講生の声紹介・質疑応答の時間を設けています。</p>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          <span class="faq__q-text">無料体験入学は、どこから申し込めば良いですか？</span>
+          <span class="faq__icon">+</span>
+        </button>
+        <p class="faq__a">このページの「無料説明会に参加する」ボタン、またはLINE公式アカウントからお申し込みいただけます。</p>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__q" aria-expanded="false">
+          <span class="faq__q-text">スマホやタブレットでも参加はできますか？</span>
+          <span class="faq__icon">+</span>
+        </button>
+        <p class="faq__a">はい、説明会はスマホ・タブレットからでもご参加いただけます。ただし、実際のAI制作作業はPCを推奨しています。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA -->
 <section class="cta" id="cta">
   <div class="container">
     <div class="cta__inner">
@@ -1192,6 +1333,16 @@
     });
   }, { threshold: 0.12 });
   fadeEls.forEach(el => fadeObserver.observe(el));
+
+  // FAQ アコーディオン
+  document.querySelectorAll('.faq__q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq__item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq__item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
 
   // 受講生の声 横スクロール → ドット連動
   const track = document.getElementById('voicesTrack');
