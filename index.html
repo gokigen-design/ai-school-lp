@@ -554,7 +554,7 @@
     @media (max-width: 600px) { .reasons__grid { grid-template-columns: 1fr; } }
 
     /* ============================
-       7. コース一覧
+       7. コース一覧（コースマップ）
     ============================ */
     .courses { background-color: var(--bg); }
     .courses__intro {
@@ -564,77 +564,157 @@
       margin-bottom: 48px;
       line-height: 1.8;
     }
-    .courses__grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .course-map {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .course-card {
-      background-color: var(--white);
+    .course-map__free {
+      width: 100%;
+      max-width: 560px;
+      background: linear-gradient(135deg, #e8f7f7 0%, #d0f0f0 100%);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      text-align: center;
+    }
+    .course-map__free-badge {
+      display: inline-block;
+      background-color: var(--accent);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      padding: 4px 18px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 10px;
+    }
+    .course-map__free-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .course-map__free-items {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .course-map__free-item {
+      font-size: 13px;
+      background: #fff;
+      border: 1px solid var(--accent);
+      color: var(--text);
+      border-radius: 40px;
+      padding: 5px 16px;
+      line-height: 1.7;
+    }
+    .course-map__arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 6px 0;
+    }
+    .course-map__arrow-line {
+      width: 2px;
+      height: 28px;
+      background-color: var(--accent);
+    }
+    .course-map__arrow-head {
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-top: 10px solid var(--accent);
+    }
+    .course-map__cats-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--text-sub);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .course-map__categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      width: 100%;
+    }
+    .course-cat {
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background: #fff;
       display: flex;
       flex-direction: column;
     }
-    .course-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
+    .course-cat__header {
+      padding: 18px 14px 14px;
+      color: #fff;
+      text-align: center;
     }
-    .course-card__top { position: relative; }
-    .course-card__img {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-      background-color: var(--bg-muted);
+    .course-cat__icon { margin-bottom: 8px; line-height: 1; }
+    .course-cat__icon svg { display: block; margin: 0 auto; }
+    .course-cat__name { font-size: 14px; font-weight: 700; line-height: 1.4; }
+    .course-cat--hatsusin .course-cat__header { background-color: #5abfbf; }
+    .course-cat--shikumika .course-cat__header { background-color: #9b7ec8; }
+    .course-cat--creator .course-cat__header { background-color: #e8829a; }
+    .course-cat--kouri .course-cat__header { background-color: #c9a96e; }
+    .course-cat__body { padding: 14px 12px 16px; flex: 1; }
+    .course-cat__items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
-    .course-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .course-card__tag {
-      position: absolute;
-      bottom: -14px;
-      left: 20px;
-      background-color: var(--accent);
-      color: var(--white);
+    .course-cat__item {
+      font-size: 12px;
+      color: var(--text);
+      line-height: 1.55;
+      padding: 5px 10px;
+      background-color: var(--bg-alt);
+      border-radius: 6px;
+    }
+    .course-cat--hatsusin .course-cat__item.is-featured { background-color: #e8f7f7; border-left: 3px solid #5abfbf; font-weight: 600; }
+    .course-cat--shikumika .course-cat__item.is-featured { background-color: #f1ecf8; border-left: 3px solid #9b7ec8; font-weight: 600; }
+    .course-cat--creator .course-cat__item.is-featured { background-color: #fdf0f3; border-left: 3px solid #e8829a; font-weight: 600; }
+    .course-cat--kouri .course-cat__item.is-featured { background-color: #faf5ec; border-left: 3px solid #c9a96e; font-weight: 600; }
+    .course-map__backend {
+      width: 100%;
+      max-width: 560px;
+      background: linear-gradient(135deg, #2a2a3e 0%, #3d3561 100%);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      text-align: center;
+      color: #fff;
+    }
+    .course-map__backend-badge {
+      display: inline-block;
+      background-color: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.4);
+      color: #fff;
       font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 4px 14px;
-      border-radius: var(--radius-pill);
-      box-shadow: 0 2px 8px rgba(90,191,191,0.35);
+      letter-spacing: 0.15em;
+      padding: 3px 18px;
+      border-radius: 40px;
+      margin-bottom: 10px;
     }
-    .course-card__body { padding: 28px 20px 20px; flex: 1; display: flex; flex-direction: column; }
-    .course-card__title {
-      font-size: clamp(15px, 3.5vw, 17px);
-      font-weight: 700;
-      line-height: 1.45;
-      margin-bottom: 8px;
-    }
-    .course-card__desc { font-size: 14px; color: var(--text-sub); line-height: 1.8; flex: 1; margin-bottom: 16px; }
-    .course-card__meta {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding-top: 12px;
-      border-top: 1px solid var(--bg-alt);
-    }
-    .course-card__info {
-      font-size: 12px;
-      color: var(--text-sub);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .course-card__info::before {
-      content: '';
-      display: inline-block;
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background-color: var(--accent);
-      flex-shrink: 0;
-    }
+    .course-map__backend-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+    .course-map__backend-desc { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,0.75); }
 
-    @media (max-width: 900px) { .courses__grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 540px) { .courses__grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .course-map__categories { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 540px) {
+      .course-map__categories { grid-template-columns: 1fr; }
+      .course-map__free, .course-map__backend { max-width: 100%; }
+    }
 
     /* ============================
        8. ビジョン
@@ -1017,87 +1097,128 @@
   <div class="container">
     <div class="section-header section-header--center">
       <span class="section-label">COURSES</span>
-      <h2>具体的に学べるコース</h2>
+      <h2>学べるコース一覧</h2>
     </div>
     <p class="courses__intro">
-      90分の実践講座から。当日中に使い始められるスキルを、1コースずつ選んで学べます。
+      無料特典でAIの基礎を学び、目的に合った専門コースへ。<br>
+      最終的にはALCで全体設計ができるレベルを目指します。
     </p>
-    <div class="courses__grid">
-      <div class="course-card">
-        <div class="course-card__top">
-          <div class="course-card__img"><img src="ko-su/LP_1.png" alt="LP制作コース"></div>
-          <span class="course-card__tag">LP制作</span>
-        </div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">AIで1日でLPを作ろう</h3>
-          <p class="course-card__desc">ChatGPTとClaude Codeを使って、デザインから公開まで1日で完成させる。</p>
-          <div class="course-card__meta">
-            <span class="course-card__info">90分</span>
-            <span class="course-card__info">未経験OK</span>
-            <span class="course-card__info">ここに価格を入れてください</span>
+    <div class="course-map fade-up">
+
+      <!-- 無料LINE登録特典 -->
+      <div class="course-map__free">
+        <span class="course-map__free-badge">FREE &nbsp;/&nbsp; LINE登録特典</span>
+        <p class="course-map__free-title">まずここから始める</p>
+        <ul class="course-map__free-items">
+          <li class="course-map__free-item">Claude Code導入（環境構築・基本操作）</li>
+          <li class="course-map__free-item">AI入門（ChatGPT / Claude 基礎）</li>
+        </ul>
+      </div>
+
+      <!-- 矢印 -->
+      <div class="course-map__arrow">
+        <div class="course-map__arrow-line"></div>
+        <div class="course-map__arrow-head"></div>
+      </div>
+
+      <!-- 専門コース -->
+      <p class="course-map__cats-label">COURSE &mdash; 専門コース（目的別に選べる）</p>
+      <div class="course-map__categories">
+
+        <!-- 発信強化 -->
+        <div class="course-cat course-cat--hatsusin">
+          <div class="course-cat__header">
+            <div class="course-cat__icon">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/><path d="M12 8v8M8 12h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div class="course-cat__name">発信強化</div>
+          </div>
+          <div class="course-cat__body">
+            <ul class="course-cat__items">
+              <li class="course-cat__item is-featured">世界観・ブランドマップWS（2時間）</li>
+              <li class="course-cat__item">スレッズ自動投稿</li>
+              <li class="course-cat__item">インスタ投稿文/リール台本</li>
+              <li class="course-cat__item">リサーチツール活用</li>
+              <li class="course-cat__item">アバターでリール撮影</li>
+              <li class="course-cat__item">画像生成（宣材写真・アバター）</li>
+              <li class="course-cat__item">ストーリーズ/プロフ最適化</li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="course-card">
-        <div class="course-card__top">
-          <div class="course-card__img"><img src="ko-su/kontenntu_1.png" alt="コンテンツ制作コース"></div>
-          <span class="course-card__tag">SNS運用</span>
-        </div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">AIでInstagram投稿を自動化する</h3>
-          <p class="course-card__desc">投稿アイデア・文章・画像をAIで量産。毎日の更新を仕組み化する方法。</p>
-          <div class="course-card__meta">
-            <span class="course-card__info">90分</span>
-            <span class="course-card__info">未経験OK</span>
-            <span class="course-card__info">ここに価格を入れてください</span>
+
+        <!-- 仕組み化 -->
+        <div class="course-cat course-cat--shikumika">
+          <div class="course-cat__header">
+            <div class="course-cat__icon">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="white" stroke-width="2"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="white" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="white" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="white" stroke-width="2"/></svg>
+            </div>
+            <div class="course-cat__name">仕組み化</div>
+          </div>
+          <div class="course-cat__body">
+            <ul class="course-cat__items">
+              <li class="course-cat__item">LINE自動投稿</li>
+              <li class="course-cat__item">LINEリッチメニュー設定</li>
+              <li class="course-cat__item">LINEボット構築</li>
+              <li class="course-cat__item">ステップ配信設計</li>
+              <li class="course-cat__item">問い合わせ〜成約の導線設計</li>
+              <li class="course-cat__item">予約・日程調整の自動化</li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="course-card">
-        <div class="course-card__top">
-          <div class="course-card__img"><img src="ko-su/line_1.png" alt="LINE活用コース"></div>
-          <span class="course-card__tag">LINE</span>
-        </div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">AIでLINE導線を整える</h3>
-          <p class="course-card__desc">リッチメニュー設計から自動配信まで。集客からリピートにつながるLINEを作る。</p>
-          <div class="course-card__meta">
-            <span class="course-card__info">90分</span>
-            <span class="course-card__info">LINE開設済みの方</span>
-            <span class="course-card__info">ここに価格を入れてください</span>
+
+        <!-- クリエイター -->
+        <div class="course-cat course-cat--creator">
+          <div class="course-cat__header">
+            <div class="course-cat__icon">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><path d="M12 20H21" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="course-cat__name">クリエイター</div>
+          </div>
+          <div class="course-cat__body">
+            <ul class="course-cat__items">
+              <li class="course-cat__item">LP制作</li>
+              <li class="course-cat__item">訴求バナー・販促画像制作</li>
+              <li class="course-cat__item">Canva &times; AI活用</li>
+              <li class="course-cat__item">提案資料・コンテンツ制作</li>
+            </ul>
           </div>
         </div>
-      </div>
-      <div class="course-card">
-        <div class="course-card__top">
-          <div class="course-card__img"><img src="ko-su/kontenntu_1.png" alt="デザインコース"></div>
-          <span class="course-card__tag">デザイン</span>
-        </div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Canvaで伝わるデザインを作る</h3>
-          <p class="course-card__desc">センスより法則。4つのデザインルールを覚えれば、見てもらえる資料が作れる。</p>
-          <div class="course-card__meta">
-            <span class="course-card__info">90分</span>
-            <span class="course-card__info">未経験OK</span>
-            <span class="course-card__info">ここに価格を入れてください</span>
+
+        <!-- 業務効率化 -->
+        <div class="course-cat course-cat--kouri">
+          <div class="course-cat__header">
+            <div class="course-cat__icon">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28"><path d="M9 11l3 3L22 4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="course-cat__name">業務効率化</div>
+          </div>
+          <div class="course-cat__body">
+            <ul class="course-cat__items">
+              <li class="course-cat__item">議事録の自動生成</li>
+              <li class="course-cat__item">提案書・見積書の自動作成</li>
+              <li class="course-cat__item">メール文章の自動化</li>
+              <li class="course-cat__item">SNS分析レポート</li>
+              <li class="course-cat__item">FAQ・チャットボット設置</li>
+              <li class="course-cat__item">スケジュール管理の仕組み化</li>
+            </ul>
           </div>
         </div>
+
       </div>
-      <div class="course-card">
-        <div class="course-card__top">
-          <div class="course-card__img"><img src="ko-su/LP_1.png" alt="Web公開コース"></div>
-          <span class="course-card__tag">Web公開</span>
-        </div>
-        <div class="course-card__body">
-          <h3 class="course-card__title">Claude Codeでサイトを公開する</h3>
-          <p class="course-card__desc">コードの知識ゼロから、GitHubでサイトを無料で公開するまでを90分で完成させる。</p>
-          <div class="course-card__meta">
-            <span class="course-card__info">90分</span>
-            <span class="course-card__info">PC操作が基本できればOK</span>
-            <span class="course-card__info">ここに価格を入れてください</span>
-          </div>
-        </div>
+
+      <!-- 矢印 -->
+      <div class="course-map__arrow">
+        <div class="course-map__arrow-line"></div>
+        <div class="course-map__arrow-head"></div>
       </div>
+
+      <!-- ALC バックエンド -->
+      <div class="course-map__backend">
+        <span class="course-map__backend-badge">BACKEND</span>
+        <p class="course-map__backend-title">ALC（AIリーダーキャンプ）</p>
+        <p class="course-map__backend-desc">全体を設計できるAIリーダーへ。<br>事業のあらゆる場面でAIを活用できる実力を身につける。</p>
+      </div>
+
     </div>
   </div>
 </section>
