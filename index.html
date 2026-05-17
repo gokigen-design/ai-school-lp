@@ -299,11 +299,10 @@
       box-shadow: var(--shadow);
     }
     .voice-card__img {
-      aspect-ratio: 3/4;
       overflow: hidden;
       background-color: var(--bg-muted);
     }
-    .voice-card__img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .voice-card__img img { width: 100%; height: auto; display: block; }
     .voice-card__body { padding: 20px 20px; }
     .voice-card__bubble {
       background-color: var(--bg-mint);
@@ -592,11 +591,15 @@
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
+      background-color: var(--bg-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .course-row__img img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       display: block;
     }
     .course-row__body {
@@ -730,20 +733,21 @@
       margin-top: 48px;
     }
     .vision__circle {
-      width: 148px;
-      height: 148px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
-      background: var(--accent);
+      background: #fff;
+      border: 2px solid var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 18px;
-      font-size: 13px;
+      padding: 20px;
+      font-size: 14px;
       font-weight: 700;
-      color: #fff;
-      line-height: 1.6;
-      box-shadow: 0 6px 20px rgba(90,191,191,0.3);
+      color: var(--accent-dark);
+      line-height: 1.65;
+      box-shadow: 0 4px 16px rgba(90,191,191,0.15);
     }
     @media (max-width: 600px) {
       .vision__circle { width: 120px; height: 120px; font-size: 12px; padding: 14px; }
@@ -754,19 +758,24 @@
        9. FAQ
     ============================ */
     .faq { background-color: var(--bg); }
+    .faq { background-color: var(--bg-alt); }
     .faq__list {
-      max-width: 800px;
+      max-width: 860px;
       margin: 0 auto;
     }
-    .faq__item { border-bottom: 1px solid #ece8e8; }
-    .faq__item:first-child { border-top: 1px solid #ece8e8; }
+    .faq__item {
+      background: var(--white);
+      border-radius: var(--radius-sm);
+      margin-bottom: 12px;
+      box-shadow: var(--shadow);
+    }
     .faq__q {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 22px 4px;
+      padding: 26px 28px;
       cursor: pointer;
-      gap: 16px;
+      gap: 20px;
       background: none;
       border: none;
       width: 100%;
@@ -774,7 +783,7 @@
       font-family: inherit;
     }
     .faq__q-text {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--text);
       line-height: 1.65;
@@ -782,28 +791,30 @@
     .faq__q-text::before {
       content: 'Q.  ';
       color: var(--accent);
-      font-weight: 700;
+      font-weight: 800;
     }
     .faq__icon {
       flex-shrink: 0;
-      width: 26px; height: 26px;
-      border: 1.5px solid var(--accent);
+      width: 30px; height: 30px;
+      border: 2px solid var(--accent);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--accent);
-      font-size: 20px;
+      font-size: 22px;
       line-height: 0;
       transition: transform 0.3s ease;
     }
     .faq__item.open .faq__icon { transform: rotate(45deg); }
     .faq__a {
       display: none;
-      padding: 0 4px 22px 28px;
-      font-size: 14px;
+      padding: 0 28px 26px 28px;
+      font-size: 15px;
       color: var(--text-sub);
-      line-height: 1.9;
+      line-height: 1.95;
+      border-top: 1px solid var(--bg-alt);
+      padding-top: 18px;
     }
     .faq__item.open .faq__a { display: block; }
 
