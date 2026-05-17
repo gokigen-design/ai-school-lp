@@ -498,10 +498,21 @@
     /* 解決メッセージ */
     .worries__solution {
       background-color: var(--accent);
-      border-radius: var(--radius);
+      border-radius: 0 0 var(--radius) var(--radius);
       padding: 40px;
       text-align: center;
       color: var(--white);
+      position: relative;
+      margin-top: 64px;
+    }
+    .worries__solution::before {
+      content: '';
+      position: absolute;
+      top: -63px;
+      left: 0; right: 0;
+      height: 65px;
+      background: var(--accent);
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
     }
     .worries__solution h3 {
       color: var(--white);
