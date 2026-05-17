@@ -495,7 +495,7 @@
     .future__rows { display: flex; flex-direction: column; }
     .future-row {
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: 1fr 360px;
       gap: 56px;
       align-items: center;
       padding: 52px 0;
@@ -512,27 +512,23 @@
       margin-bottom: 10px;
     }
     .future-row__title {
-      font-size: clamp(20px, 2.2vw, 26px);
+      font-size: clamp(26px, 2.8vw, 34px);
       font-weight: 700;
       line-height: 1.45;
       color: var(--text);
       margin-bottom: 14px;
     }
-    .future-row__desc { font-size: 18px; color: var(--text-sub); line-height: 1.9; }
+    .future-row__desc { font-size: 20px; color: var(--text-sub); line-height: 1.9; }
     .future-row__illus {
-      background: var(--white);
-      border-radius: var(--radius);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 28px;
-      box-shadow: var(--shadow);
-      min-height: 180px;
     }
     .future-row__illus svg { display: block; max-width: 100%; }
-    .future-row__illus img { display: block; max-width: 220px; width: 100%; height: auto; }
+    .future-row__illus img { display: block; width: 100%; height: auto; }
     @media (max-width: 780px) {
       .future-row { grid-template-columns: 1fr; gap: 20px; padding: 36px 0; }
+      .future-row__illus { max-width: 280px; margin: 0 auto; }
     }
 
     /* ============================
@@ -575,7 +571,8 @@
     /* ============================
        7. コース一覧（コースマップ）
     ============================ */
-    .courses { background-color: var(--bg); }
+    .courses { background-color: transparent; }
+    .courses.bg-image-section::before { background: rgba(255,255,255,0.55); }
     .course-rows {
       display: flex;
       flex-direction: column;
@@ -1169,7 +1166,7 @@
 </section>
 
 <!-- 7. コース一覧 -->
-<section class="courses" id="courses">
+<section class="courses bg-image-section" id="courses">
   <div class="container">
     <div class="section-header section-header--center">
       <span class="section-label">COURSES</span>
