@@ -327,10 +327,11 @@
     ============================ */
     .interview { background-color: var(--white); }
     .interview__inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      gap: 36px;
+      text-align: center;
     }
     .video-placeholder {
       aspect-ratio: 16/9;
@@ -384,7 +385,7 @@
     }
 
     /* interviewセクション動画 */
-    .interview__video-wrap { width: 100%; }
+    .interview__video-wrap { width: 100%; max-width: 860px; }
     .interview__video-ratio {
       position: relative;
       padding-bottom: 56.25%;
@@ -1028,7 +1029,7 @@
           <iframe src="https://player.vimeo.com/video/1182993980?h=f7ea20cec9" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen title="AIキャンプ_成果発表＆受講生の声"></iframe>
         </div>
       </div>
-      <div class="interview__text">
+      <div class="interview__text" style="max-width:640px;">
         <span class="section-label">STORY</span>
         <h2>受講生のリアルな変化</h2>
         <p>
