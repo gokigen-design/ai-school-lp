@@ -300,24 +300,26 @@
     /* 画像グリッド（動画の下） */
     .voices__images {
       display: flex;
-      gap: 24px;
+      gap: 20px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      padding: 8px 4px 24px;
+      padding: 8px 0 24px;
       scrollbar-width: none;
+      scroll-behavior: smooth;
     }
     .voices__images::-webkit-scrollbar { display: none; }
     .voice-img {
-      flex: 0 0 300px;
-      scroll-snap-align: start;
+      flex: 0 0 480px;
+      scroll-snap-align: center;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-md);
+      transition: transform 0.3s;
     }
     .voice-img img { width: 100%; height: auto; display: block; }
     @media (max-width: 768px) {
-      .voice-img { flex: 0 0 260px; }
+      .voice-img { flex: 0 0 85vw; }
     }
 
     /* ============================
@@ -1007,12 +1009,12 @@
       <span class="section-label">VOICES</span>
       <h2>受講生の変化</h2>
     </div>
-    <div class="voices__images fade-up">
-      <div class="voice-img"><img src="menber/aki_1.png" alt="受講生の声"></div>
-      <div class="voice-img"><img src="menber/momo_1.png" alt="受講生の声"></div>
-      <div class="voice-img"><img src="menber/naka_1.png" alt="受講生の声"></div>
-      <div class="voice-img"><img src="menber/siori_1.png" alt="受講生の声"></div>
-      <div class="voice-img"><img src="menber/yumi_1.png" alt="受講生の声"></div>
+    <div class="voices__images fade-up" id="voicesSlider">
+      <div class="voice-img"><img src="menber/aki_1.png" alt="受講生の声 aki"></div>
+      <div class="voice-img"><img src="menber/momo_1.png" alt="受講生の声 momo"></div>
+      <div class="voice-img"><img src="menber/naka_1.png" alt="受講生の声 naka"></div>
+      <div class="voice-img"><img src="menber/siori_1.png" alt="受講生の声 siori"></div>
+      <div class="voice-img"><img src="menber/yumi_1.png" alt="受講生の声 yumi"></div>
     </div>
   </div>
 </section>
@@ -1480,23 +1482,48 @@
     });
   });
 
-  // 受講生の声 横スクロール → ドット連動
-  const track = document.getElementById('voicesTrack');
-  const dots  = document.querySelectorAll('.voices__dot');
+  // 受講生の声 自動スクロール
+  const voicesSlider = document.getElementById('voicesSlider');
+  if (voicesSlider) {
+    let current = 0;
+    let autoTimer = null;
+    const items = voicesSlider.querySelectorAll('.voice-img');
+    const total = items.length;
 
-  if (track && dots.length) {
-    track.addEventListener('scroll', () => {
-      const cardWidth = track.querySelector('.voice-card').offsetWidth + 20;
-      const index = Math.round(track.scrollLeft / cardWidth);
-      dots.forEach((d, i) => d.classList.toggle('active', i === index));
-    });
+    function scrollToIndex(index) {
+      const item = items[index];
+      const itemLeft = item.offsetLeft;
+      const itemWidth = item.offsetWidth;
+      const sliderWidth = voicesSlider.offsetWidth;
+      const scrollTo = itemLeft - (sliderWidth - itemWidth) / 2;
+      voicesSlider.scrollTo({ left: scrollTo, behavior: 'smooth' });
+    }
 
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        const cardWidth = track.querySelector('.voice-card').offsetWidth + 20;
-        track.scrollTo({ left: cardWidth * Number(dot.dataset.index), behavior: 'smooth' });
-      });
-    });
+    function nextSlide() {
+      current = (current + 1) % total;
+      scrollToIndex(current);
+    }
+
+    function startAuto() {
+      autoTimer = setInterval(nextSlide, 2800);
+    }
+
+    function stopAuto() {
+      clearInterval(autoTimer);
+    }
+
+    // ホバー中は停止
+    voicesSlider.addEventListener('mouseenter', stopAuto);
+    voicesSlider.addEventListener('mouseleave', startAuto);
+    // タッチ操作中も停止
+    voicesSlider.addEventListener('touchstart', stopAuto, { passive: true });
+    voicesSlider.addEventListener('touchend', () => {
+      setTimeout(startAuto, 2000);
+    }, { passive: true });
+
+    // 最初の表示を1枚目に揃えてからスタート
+    scrollToIndex(0);
+    startAuto();
   }
 </script>
 </body>
