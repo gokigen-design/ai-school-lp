@@ -841,7 +841,7 @@
 
     /* 写真エリア */
     .instructor-card__photo {
-      aspect-ratio: 3/4;
+      aspect-ratio: 16/9;
       position: relative;
       overflow: hidden;
       background-color: var(--card-accent, #5abfbf);
@@ -943,7 +943,6 @@
     }
     @media (max-width: 560px) {
       .instructor-cards { grid-template-columns: 1fr; }
-      .instructor-card__photo { aspect-ratio: 4/3; }
     }
 
     /* ============================
@@ -1487,11 +1486,7 @@
       <!-- 01 世界観・ブランドマップ（講師：あやのさん） -->
       <div class="instructor-card fade-up" style="--card-accent:#5abfbf;">
         <div class="instructor-card__photo">
-          <div class="instructor-card__face-wrap">
-            <div class="instructor-card__face">
-              <img src="menber/ayano.png" alt="あやのさん">
-            </div>
-          </div>
+          <img src="menber/ayano.png" alt="あやのさん">
         </div>
         <div class="instructor-card__body">
           <span class="instructor-card__num">COURSE 01</span>
