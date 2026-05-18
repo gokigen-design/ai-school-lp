@@ -532,82 +532,89 @@
     }
 
     /* ============================
-       5. AIで叶う未来
+       5. AIで叶う未来（3カラムグリッド）
     ============================ */
     .future { background-color: var(--bg-alt); }
-    .future__rows { display: flex; flex-direction: column; }
-    .future-row {
-      display: grid;
-      grid-template-columns: 1fr 360px;
-      gap: 56px;
-      align-items: center;
-      padding: 52px 0;
-      border-bottom: 1px solid #ece8e8;
-    }
-    .future-row:first-child { padding-top: 4px; }
-    .future-row:last-child { border-bottom: none; }
-    .future-row__num {
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.2em;
-      color: var(--accent);
-      display: block;
-      margin-bottom: 10px;
-    }
-    .future-row__title {
-      font-size: clamp(26px, 2.8vw, 34px);
-      font-weight: 700;
-      line-height: 1.45;
-      color: var(--text);
-      margin-bottom: 14px;
-    }
-    .future-row__desc { font-size: 20px; color: var(--text-sub); line-height: 1.9; }
-    .future-row__illus {
+    .future__grid {
       display: flex;
-      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
       justify-content: center;
     }
-    .future-row__illus svg { display: block; max-width: 100%; }
-    .future-row__illus img { display: block; width: 100%; height: auto; }
-    @media (max-width: 780px) {
-      .future-row { grid-template-columns: 1fr; gap: 20px; padding: 36px 0; }
-      .future-row__illus { max-width: 280px; margin: 0 auto; }
+    .future-card {
+      flex: 0 0 calc(33.333% - 14px);
+      min-width: 260px;
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px 24px 28px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .future-card__icon {
+      width: 72px; height: 72px;
+      margin-bottom: 18px;
+    }
+    .future-card__icon img { width: 100%; height: auto; display: block; }
+    .future-card__num {
+      font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
+      color: var(--accent); display: block; margin-bottom: 8px;
+    }
+    .future-card__title {
+      font-size: 18px; font-weight: 700;
+      color: var(--text); margin-bottom: 10px; line-height: 1.5;
+    }
+    .future-card__desc { font-size: 14px; color: var(--text-sub); line-height: 1.75; }
+    @media (max-width: 768px) {
+      .future-card { flex: 0 0 calc(50% - 10px); }
+    }
+    @media (max-width: 480px) {
+      .future-card { flex: 0 0 100%; min-width: 0; }
     }
 
     /* ============================
-       6. 選ばれる理由
+       6. 選ばれる理由（左右交互2カラム）
     ============================ */
     .reasons { background-color: transparent; }
-    .reasons__grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
+    .reasons__list {
+      display: flex;
+      flex-direction: column;
       gap: 24px;
     }
     .reason-item {
-      background-color: var(--white);
+      display: flex;
+      min-height: 420px;
+      background: var(--white);
       border-radius: var(--radius);
-      box-shadow: var(--shadow);
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      align-items: stretch;
-      transition: transform 0.2s ease;
+      box-shadow: var(--shadow-md);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
-    .reason-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+    .reason-item:hover { transform: translateY(-4px); box-shadow: 0 20px 56px rgba(0,0,0,0.1); }
+    /* 偶数番目は写真を右に */
+    .reason-item:nth-child(even) { flex-direction: row-reverse; }
     .reason-item__img {
+      flex: 0 0 48%;
       overflow: hidden;
     }
     .reason-item__img img {
       width: 100%; height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
     }
     .reason-item__content {
-      padding: 28px 24px;
+      flex: 1;
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .reason-item__num {
       display: inline-flex;
-      width: 40px; height: 40px;
+      width: 44px; height: 44px;
       background-color: var(--accent-light);
       border: 2px solid var(--accent);
       color: var(--accent);
@@ -615,19 +622,20 @@
       align-items: center;
       justify-content: center;
       font-weight: 700;
-      font-size: 13px;
-      margin-bottom: 14px;
+      font-size: 14px;
+      margin-bottom: 18px;
+      flex-shrink: 0;
     }
-    .reason-item__body h3 { margin-bottom: 10px; font-size: clamp(17px, 2vw, 20px); }
-    .reason-item__body p  { font-size: 15px; color: var(--text-sub); line-height: 1.85; }
-    @media (max-width: 900px) { .reasons__grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) {
-      .reason-item { grid-template-columns: 1fr; }
-      .reason-item__img {
-        aspect-ratio: 4/5;
-        height: auto;
-      }
-      .reason-item__img img { object-position: center top; }
+    .reason-item__body h3 { margin-bottom: 12px; font-size: clamp(18px, 2vw, 22px); }
+    .reason-item__body p  { font-size: 16px; color: var(--text-sub); line-height: 1.9; }
+    @media (max-width: 768px) {
+      .reason-item,
+      .reason-item:nth-child(even) { flex-direction: column; }
+      .reason-item__img { flex: none; aspect-ratio: 4/3; }
+      .reason-item__content { padding: 32px 28px; }
+    }
+    @media (max-width: 480px) {
+      .reason-item__content { padding: 24px 20px; }
     }
 
     /* ============================
@@ -1340,61 +1348,41 @@
       <span class="section-label">WHAT YOU CAN DO</span>
       <h2>AIで叶う5つのこと</h2>
     </div>
-    <div class="future__rows">
+    <div class="future__grid">
 
-      <div class="future-row fade-up">
-        <div class="future-row__text">
-          <span class="future-row__num">01</span>
-          <h3 class="future-row__title">仕事がラクになる</h3>
-          <p class="future-row__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
-        </div>
-        <div class="future-row__illus">
-          <img src="アイコン/1_aikon.png" alt="仕事がラクになる">
-        </div>
+      <div class="future-card fade-up">
+        <div class="future-card__icon"><img src="アイコン/1_aikon.png" alt=""></div>
+        <span class="future-card__num">01</span>
+        <h3 class="future-card__title">仕事がラクになる</h3>
+        <p class="future-card__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
       </div>
 
-      <div class="future-row fade-up">
-        <div class="future-row__text">
-          <span class="future-row__num">02</span>
-          <h3 class="future-row__title">好きなことに集中できる</h3>
-          <p class="future-row__desc">雑務から解放されて、クリエイティブな仕事・接客・企画に集中できる環境を作る。</p>
-        </div>
-        <div class="future-row__illus">
-          <img src="アイコン/2_aikon.png" alt="好きなことに集中できる">
-        </div>
+      <div class="future-card fade-up delay-1">
+        <div class="future-card__icon"><img src="アイコン/2_aikon.png" alt=""></div>
+        <span class="future-card__num">02</span>
+        <h3 class="future-card__title">好きなことに集中できる</h3>
+        <p class="future-card__desc">雑務から解放されて、クリエイティブな仕事・企画に集中できる環境を作る。</p>
       </div>
 
-      <div class="future-row fade-up">
-        <div class="future-row__text">
-          <span class="future-row__num">03</span>
-          <h3 class="future-row__title">自分の事業を伸ばせる</h3>
-          <p class="future-row__desc">LP制作・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
-        </div>
-        <div class="future-row__illus">
-          <img src="アイコン/3_aikon.png" alt="自分の事業を伸ばせる">
-        </div>
+      <div class="future-card fade-up delay-2">
+        <div class="future-card__icon"><img src="アイコン/3_aikon.png" alt=""></div>
+        <span class="future-card__num">03</span>
+        <h3 class="future-card__title">自分の事業を伸ばせる</h3>
+        <p class="future-card__desc">LP・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
       </div>
 
-      <div class="future-row fade-up">
-        <div class="future-row__text">
-          <span class="future-row__num">04</span>
-          <h3 class="future-row__title">クライアントワークの幅が広がる</h3>
-          <p class="future-row__desc">AI活用スキルをサービスに加えることで、単価アップと差別化を同時に実現できる。</p>
-        </div>
-        <div class="future-row__illus">
-          <img src="アイコン/4_aikon.png" alt="クライアントワークの幅が広がる">
-        </div>
+      <div class="future-card fade-up delay-1">
+        <div class="future-card__icon"><img src="アイコン/4_aikon.png" alt=""></div>
+        <span class="future-card__num">04</span>
+        <h3 class="future-card__title">クライアントワークの幅が広がる</h3>
+        <p class="future-card__desc">AI活用スキルをサービスに加えることで、単価アップと差別化を同時に実現できる。</p>
       </div>
 
-      <div class="future-row fade-up">
-        <div class="future-row__text">
-          <span class="future-row__num">05</span>
-          <h3 class="future-row__title">新しい収入源を作れる</h3>
-          <p class="future-row__desc">AIを教える・使って制作するという新しい切り口で、収入の柱を増やせる。</p>
-        </div>
-        <div class="future-row__illus">
-          <img src="アイコン/5_aikon.png" alt="新しい収入源を作れる">
-        </div>
+      <div class="future-card fade-up delay-2">
+        <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt=""></div>
+        <span class="future-card__num">05</span>
+        <h3 class="future-card__title">新しい収入源を作れる</h3>
+        <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
       </div>
 
     </div>
@@ -1408,8 +1396,9 @@
       <span class="section-label">WHY US</span>
       <h2>選ばれる4つの理由</h2>
     </div>
-    <div class="reasons__grid">
-      <div class="reason-item">
+    <div class="reasons__list">
+
+      <div class="reason-item fade-up">
         <div class="reason-item__img"><img src="女子/jyosi_1.png" alt="野田さんから直接学んだ講師が教える"></div>
         <div class="reason-item__content">
           <div class="reason-item__num">01</div>
@@ -1419,7 +1408,8 @@
           </div>
         </div>
       </div>
-      <div class="reason-item">
+
+      <div class="reason-item fade-up">
         <div class="reason-item__img"><img src="女子/jyosi_2.png" alt="各分野の専門家が担当する"></div>
         <div class="reason-item__content">
           <div class="reason-item__num">02</div>
@@ -1429,7 +1419,8 @@
           </div>
         </div>
       </div>
-      <div class="reason-item">
+
+      <div class="reason-item fade-up">
         <div class="reason-item__img"><img src="女子/jyosi_3.png" alt="マーケティングを本場で学んだ人が教える"></div>
         <div class="reason-item__content">
           <div class="reason-item__num">03</div>
@@ -1439,7 +1430,8 @@
           </div>
         </div>
       </div>
-      <div class="reason-item">
+
+      <div class="reason-item fade-up">
         <div class="reason-item__img"><img src="女子/jyosi_4.png" alt="実際に売上を立てている講師が担当"></div>
         <div class="reason-item__content">
           <div class="reason-item__num">04</div>
@@ -1449,6 +1441,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
