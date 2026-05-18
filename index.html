@@ -623,7 +623,11 @@
     @media (max-width: 900px) { .reasons__grid { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
       .reason-item { grid-template-columns: 1fr; }
-      .reason-item__img { height: 200px; }
+      .reason-item__img {
+        aspect-ratio: 4/5;
+        height: auto;
+      }
+      .reason-item__img img { object-position: center top; }
     }
 
     /* ============================
@@ -974,7 +978,7 @@
       background-position: center;
     }
     .faq.bg-image-section { background-image: url("faq-bg.png"); }
-    .faq.bg-image-section::before { background: transparent; }
+    .faq.bg-image-section::before { background: rgba(255,255,255,0.80); }
     .faq__list {
       max-width: 860px;
       margin: 0 auto;
@@ -1071,10 +1075,10 @@
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
     .fade-up.visible { opacity: 1; transform: translateY(0); }
-    .fade-up.delay-1 { transition-delay: 0.1s; }
-    .fade-up.delay-2 { transition-delay: 0.2s; }
-    .fade-up.delay-3 { transition-delay: 0.3s; }
-    .fade-up.delay-4 { transition-delay: 0.4s; }
+    .fade-up.delay-1 { transition-delay: 0.12s; }
+    .fade-up.delay-2 { transition-delay: 0.24s; }
+    .fade-up.delay-3 { transition-delay: 0.36s; }
+    .fade-up.delay-4 { transition-delay: 0.48s; }
 
     .parallax-layer {
       will-change: transform;
@@ -1567,9 +1571,9 @@
       <span class="section-label">FAQ</span>
       <h2>よくある質問</h2>
     </div>
-    <div class="faq__list fade-up">
+    <div class="faq__list">
 
-      <div class="faq__item">
+      <div class="faq__item fade-up">
         <button class="faq__q" aria-expanded="false">
           <span class="faq__q-text">初心者でもできますか？また、資格など必要ですか？</span>
           <span class="faq__icon">+</span>
@@ -1577,7 +1581,7 @@
         <p class="faq__a">はい、完全初心者の方でも安心してご参加いただけます。AIに触れたことがない方でも、基礎からていねいに学べる構成になっています。資格は一切不要です。</p>
       </div>
 
-      <div class="faq__item">
+      <div class="faq__item fade-up delay-1">
         <button class="faq__q" aria-expanded="false">
           <span class="faq__q-text">無料体験入学はいつでも受け付けていますか？</span>
           <span class="faq__icon">+</span>
@@ -1585,7 +1589,7 @@
         <p class="faq__a">説明会は毎月開催しています。LINEにご登録いただくと、最新の開催日程をいち早くご案内します。</p>
       </div>
 
-      <div class="faq__item">
+      <div class="faq__item fade-up delay-2">
         <button class="faq__q" aria-expanded="false">
           <span class="faq__q-text">無料体験入学ではどれくらい時間を確保しておくと良いですか？</span>
           <span class="faq__icon">+</span>
@@ -1593,7 +1597,7 @@
         <p class="faq__a">約60〜90分をご確保ください。スクールの内容説明・受講生の声紹介・質疑応答の時間を設けています。</p>
       </div>
 
-      <div class="faq__item">
+      <div class="faq__item fade-up delay-3">
         <button class="faq__q" aria-expanded="false">
           <span class="faq__q-text">無料体験入学は、どこから申し込めば良いですか？</span>
           <span class="faq__icon">+</span>
@@ -1601,7 +1605,7 @@
         <p class="faq__a">このページの「無料説明会に参加する」ボタン、またはLINE公式アカウントからお申し込みいただけます。</p>
       </div>
 
-      <div class="faq__item">
+      <div class="faq__item fade-up delay-4">
         <button class="faq__q" aria-expanded="false">
           <span class="faq__q-text">スマホやタブレットでも参加はできますか？</span>
           <span class="faq__icon">+</span>
