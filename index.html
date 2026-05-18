@@ -734,87 +734,155 @@
     }
 
     /* 2カラムイントロ */
-    .courses__intro {
+    /* コースセクション見出し */
+    .courses__heading {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+    .courses__heading h2 {
+      font-size: clamp(28px, 3.5vw, 40px);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .courses__lead {
+      font-size: 16px;
+      color: var(--text-sub);
+      line-height: 1.9;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* 講師カードグリッド（3＋2センター） */
+    .instructor-cards {
       display: grid;
-      grid-template-columns: 400px 1fr;
-      align-items: stretch;
-      margin-bottom: 36px;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+    }
+    .instructor-card {
+      grid-column: span 2;
       background: #fff;
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
-    .courses__intro-img {
+    .instructor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 56px rgba(0,0,0,0.12);
+    }
+    /* 4・5枚目を中央配置 */
+    .instructor-card:nth-child(4) { grid-column: 2 / 4; }
+    .instructor-card:nth-child(5) { grid-column: 4 / 6; }
+
+    /* 写真エリア */
+    .instructor-card__photo {
+      aspect-ratio: 3/4;
+      position: relative;
       overflow: hidden;
+      background-color: var(--card-accent, #5abfbf);
     }
-    .courses__intro-img img {
+    .instructor-card__photo img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center top;
       display: block;
-      min-height: 320px;
     }
-    .courses__intro-text {
-      padding: 44px 44px 40px;
+    /* 写真プレースホルダー */
+    .instructor-card__ph {
+      width: 100%;
+      height: 100%;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
-      border-left: 5px solid var(--accent);
+      gap: 10px;
     }
-    .courses__intro-text .course-row__catch {
-      font-size: clamp(18px, 2vw, 22px);
-      margin-bottom: 12px;
-    }
-    .courses__intro-text .course-row__sub { margin-bottom: 0; }
-
-    /* 5ブロックグリッド（3＋2センター） */
-    .course-blocks {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 18px;
-    }
-    .course-block {
-      grid-column: span 2;
-      background: #fff;
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      border-top: 4px solid var(--accent);
-      box-shadow: var(--shadow);
-    }
-    .course-block:nth-child(4) { grid-column: 2 / 4; }
-    .course-block:nth-child(5) { grid-column: 4 / 6; }
-    .course-block__num {
-      display: block;
+    .instructor-card__ph svg { opacity: 0.5; }
+    .instructor-card__ph span {
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 10px;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.12em;
+      font-weight: 600;
     }
-    .course-block__title {
+
+    /* カード情報エリア */
+    .instructor-card__body {
+      padding: 22px 22px 26px;
+      border-top: 4px solid var(--card-accent, #5abfbf);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .instructor-card__num {
+      display: block;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      color: var(--card-accent, #5abfbf);
+      margin-bottom: 8px;
+    }
+    .instructor-card__title {
       font-size: 17px;
       font-weight: 700;
       color: var(--text);
       line-height: 1.5;
       margin-bottom: 10px;
     }
-    .course-block__desc {
+    .instructor-card__teacher {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0ede8;
+    }
+    .instructor-card__teacher-photo {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: var(--card-accent, #5abfbf);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .instructor-card__teacher-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .instructor-card__teacher-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .instructor-card__teacher-role {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+    .instructor-card__desc {
       font-size: 14px;
       color: var(--text-sub);
-      line-height: 1.75;
+      line-height: 1.8;
+      margin-top: auto;
     }
 
-    @media (max-width: 900px) {
-      .courses__intro { grid-template-columns: 1fr; }
-      .courses__intro-img img { min-height: auto; aspect-ratio: 16/9; object-fit: cover; }
-      .courses__intro-text { padding: 28px 24px; border-left: none; border-top: 5px solid var(--accent); }
-      .course-blocks { grid-template-columns: repeat(2, 1fr); }
-      .course-block,
-      .course-block:nth-child(4),
-      .course-block:nth-child(5) { grid-column: span 1; }
+    /* レスポンシブ */
+    @media (max-width: 960px) {
+      .instructor-cards { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+      .instructor-card,
+      .instructor-card:nth-child(4),
+      .instructor-card:nth-child(5) { grid-column: span 1; }
     }
     @media (max-width: 560px) {
-      .course-blocks { grid-template-columns: 1fr; }
+      .instructor-cards { grid-template-columns: 1fr; }
+      .instructor-card__photo { aspect-ratio: 4/3; }
     }
 
     /* ============================
@@ -1335,53 +1403,134 @@
 <!-- 7. コース一覧 -->
 <section class="courses bg-image-section" id="courses">
   <div class="container">
-    <div class="section-header section-header--center">
+    <!-- 大見出し + 説明文 -->
+    <div class="courses__heading fade-up">
       <span class="section-label">COURSES</span>
-      <h2>学べるコース一覧</h2>
-    </div>
-    <!-- 2カラム：左=写真、右=テキスト -->
-    <div class="courses__intro fade-up">
-      <div class="courses__intro-img">
-        <img src="ko-su/kontenntu_1.png" alt="発信強化コース">
-      </div>
-      <div class="courses__intro-text">
-        <span class="course-row__badge" style="background-color:#5abfbf; margin-bottom:16px;">発信強化</span>
-        <p class="course-row__catch">投稿にかかる時間を半分に。<br>発信が続くから、集客が止まらない。</p>
-        <p class="course-row__sub">画像・文章・リール台本をAIが全部サポート。毎日のSNS運用が驚くほどラクになる。</p>
-      </div>
+      <h2>発信コース</h2>
+      <p class="courses__lead">SNS運用をAIで仕組み化。忙しい起業家でも、毎日の発信が驚くほどラクに続く。<br>各コースは90分の実践形式。当日から使えるスキルを担当講師が直接教えます。</p>
     </div>
 
-    <!-- 5つのコースブロック -->
-    <div class="course-blocks fade-up">
+    <!-- 講師カードグリッド -->
+    <div class="instructor-cards">
 
-      <div class="course-block">
-        <span class="course-block__num">01</span>
-        <p class="course-block__title">世界観・ブランドマップ</p>
-        <p class="course-block__desc">あなたらしい世界観を言語化し、発信の軸となるブランドの地図を作る2時間のワークショップ。</p>
+      <!-- 01 世界観・ブランドマップ -->
+      <div class="instructor-card fade-up" style="--card-accent:#5abfbf;">
+        <div class="instructor-card__photo">
+          <div class="instructor-card__ph">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>講師写真を配置</span>
+          </div>
+        </div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">COURSE 01</span>
+          <p class="instructor-card__title">世界観・ブランドマップ</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo">
+              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
+              <p class="instructor-card__teacher-role">ブランディング専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">あなたらしい世界観を言語化し、発信の軸となるブランドの地図を作るワークショップ（2時間）。</p>
+        </div>
       </div>
 
-      <div class="course-block">
-        <span class="course-block__num">02</span>
-        <p class="course-block__title">スレッズ自動投稿</p>
-        <p class="course-block__desc">ThreadsへのAI自動投稿を仕組み化。ネタ切れなし、毎日の発信がラクに続く。</p>
+      <!-- 02 スレッズ自動投稿 -->
+      <div class="instructor-card fade-up" style="--card-accent:#9b7ec8;">
+        <div class="instructor-card__photo">
+          <div class="instructor-card__ph">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>講師写真を配置</span>
+          </div>
+        </div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">COURSE 02</span>
+          <p class="instructor-card__title">スレッズ自動投稿</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo" style="background-color:#9b7ec8;">
+              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
+              <p class="instructor-card__teacher-role">SNS自動化専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">ThreadsへのAI自動投稿を仕組み化。ネタ切れなし、毎日の発信がラクに続く。</p>
+        </div>
       </div>
 
-      <div class="course-block">
-        <span class="course-block__num">03</span>
-        <p class="course-block__title">インスタ投稿・リール台本</p>
-        <p class="course-block__desc">Instagramの投稿文・ハッシュタグ・リール台本をAIが代わりに生成。時間を大幅カット。</p>
+      <!-- 03 インスタ投稿・リール台本 -->
+      <div class="instructor-card fade-up" style="--card-accent:#e8829a;">
+        <div class="instructor-card__photo">
+          <div class="instructor-card__ph">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>講師写真を配置</span>
+          </div>
+        </div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">COURSE 03</span>
+          <p class="instructor-card__title">インスタ投稿・リール台本</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo" style="background-color:#e8829a;">
+              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
+              <p class="instructor-card__teacher-role">Instagram運用専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">Instagramの投稿文・ハッシュタグ・リール台本をAIが生成。発信時間を大幅カット。</p>
+        </div>
       </div>
 
-      <div class="course-block">
-        <span class="course-block__num">04</span>
-        <p class="course-block__title">リサーチツール</p>
-        <p class="course-block__desc">競合分析・トレンド調査・ターゲット深掘りをAIツールで爆速リサーチ。</p>
+      <!-- 04 リサーチツール -->
+      <div class="instructor-card fade-up" style="--card-accent:#c9a96e;">
+        <div class="instructor-card__photo">
+          <div class="instructor-card__ph">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>講師写真を配置</span>
+          </div>
+        </div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">COURSE 04</span>
+          <p class="instructor-card__title">リサーチツール</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo" style="background-color:#c9a96e;">
+              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
+              <p class="instructor-card__teacher-role">AIリサーチ専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">競合分析・トレンド調査・ターゲット深掘りをAIツールで爆速リサーチ。</p>
+        </div>
       </div>
 
-      <div class="course-block">
-        <span class="course-block__num">05</span>
-        <p class="course-block__title">アバターでリール撮影</p>
-        <p class="course-block__desc">顔出し不要。AIアバターを使ってリール動画を量産する、新しい発信スタイル。</p>
+      <!-- 05 アバターでリール撮影 -->
+      <div class="instructor-card fade-up" style="--card-accent:#5aa8bf;">
+        <div class="instructor-card__photo">
+          <div class="instructor-card__ph">
+            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
+            <span>講師写真を配置</span>
+          </div>
+        </div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">COURSE 05</span>
+          <p class="instructor-card__title">アバターでリール撮影</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo" style="background-color:#5aa8bf;">
+              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
+              <p class="instructor-card__teacher-role">動画・アバター生成専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">顔出し不要。AIアバターを使ってリール動画を量産する、新しい発信スタイル。</p>
+        </div>
       </div>
 
     </div>
