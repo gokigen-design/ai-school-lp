@@ -733,6 +733,90 @@
       .course-row__body { padding: 28px 24px; }
     }
 
+    /* 2カラムイントロ */
+    .courses__intro {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      align-items: stretch;
+      margin-bottom: 36px;
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .courses__intro-img {
+      overflow: hidden;
+    }
+    .courses__intro-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      min-height: 320px;
+    }
+    .courses__intro-text {
+      padding: 44px 44px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-left: 5px solid var(--accent);
+    }
+    .courses__intro-text .course-row__catch {
+      font-size: clamp(18px, 2vw, 22px);
+      margin-bottom: 12px;
+    }
+    .courses__intro-text .course-row__sub { margin-bottom: 0; }
+
+    /* 5ブロックグリッド（3＋2センター） */
+    .course-blocks {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 18px;
+    }
+    .course-block {
+      grid-column: span 2;
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      border-top: 4px solid var(--accent);
+      box-shadow: var(--shadow);
+    }
+    .course-block:nth-child(4) { grid-column: 2 / 4; }
+    .course-block:nth-child(5) { grid-column: 4 / 6; }
+    .course-block__num {
+      display: block;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .course-block__title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }
+    .course-block__desc {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+      .courses__intro { grid-template-columns: 1fr; }
+      .courses__intro-img img { min-height: auto; aspect-ratio: 16/9; object-fit: cover; }
+      .courses__intro-text { padding: 28px 24px; border-left: none; border-top: 5px solid var(--accent); }
+      .course-blocks { grid-template-columns: repeat(2, 1fr); }
+      .course-block,
+      .course-block:nth-child(4),
+      .course-block:nth-child(5) { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .course-blocks { grid-template-columns: 1fr; }
+    }
+
     /* ============================
        8. ビジョン
     ============================ */
@@ -1255,85 +1339,49 @@
       <span class="section-label">COURSES</span>
       <h2>学べるコース一覧</h2>
     </div>
-    <div class="course-rows">
+    <!-- 2カラム：左=写真、右=テキスト -->
+    <div class="courses__intro fade-up">
+      <div class="courses__intro-img">
+        <img src="ko-su/kontenntu_1.png" alt="発信強化コース">
+      </div>
+      <div class="courses__intro-text">
+        <span class="course-row__badge" style="background-color:#5abfbf; margin-bottom:16px;">発信強化</span>
+        <p class="course-row__catch">投稿にかかる時間を半分に。<br>発信が続くから、集客が止まらない。</p>
+        <p class="course-row__sub">画像・文章・リール台本をAIが全部サポート。毎日のSNS運用が驚くほどラクになる。</p>
+      </div>
+    </div>
 
-      <!-- 発信強化 -->
-      <div class="course-row course-row--hatsusin fade-up">
-        <div class="course-row__img">
-          <img src="ko-su/kontenntu_1.png" alt="発信強化コース">
-        </div>
-        <div class="course-row__body">
-          <span class="course-row__badge">発信強化</span>
-          <p class="course-row__catch">投稿にかかる時間を半分に。<br>発信が続くから、集客が止まらない。</p>
-          <p class="course-row__sub">画像・文章・リール台本をAIが全部サポート。毎日のSNS運用が驚くほどラクになる。</p>
-          <ul class="course-row__tags">
-            <li class="course-row__tag is-featured">世界観・ブランドマップWS（2時間）</li>
-            <li class="course-row__tag">スレッズ自動投稿</li>
-            <li class="course-row__tag">インスタ投稿文/リール台本</li>
-            <li class="course-row__tag">リサーチツール活用</li>
-            <li class="course-row__tag">アバターでリール撮影</li>
-            <li class="course-row__tag">画像生成（宣材写真・アバター）</li>
-            <li class="course-row__tag">ストーリーズ/プロフ最適化</li>
-          </ul>
-        </div>
+    <!-- 5つのコースブロック -->
+    <div class="course-blocks fade-up">
+
+      <div class="course-block">
+        <span class="course-block__num">01</span>
+        <p class="course-block__title">世界観・ブランドマップ</p>
+        <p class="course-block__desc">あなたらしい世界観を言語化し、発信の軸となるブランドの地図を作る2時間のワークショップ。</p>
       </div>
 
-      <!-- 仕組み化 -->
-      <div class="course-row course-row--shikumika fade-up">
-        <div class="course-row__img">
-          <img src="ko-su/line_1.png" alt="仕組み化コース">
-        </div>
-        <div class="course-row__body">
-          <span class="course-row__badge">仕組み化</span>
-          <p class="course-row__catch">1度作れば、寝ていても<br>集客・成約が動き続ける。</p>
-          <p class="course-row__sub">LINE自動配信と導線設計をAIで構築。起きたら問い合わせが届いている、そんな仕組みを作る。</p>
-          <ul class="course-row__tags">
-            <li class="course-row__tag">LINE自動投稿</li>
-            <li class="course-row__tag">LINEリッチメニュー設定</li>
-            <li class="course-row__tag">LINEボット構築</li>
-            <li class="course-row__tag">ステップ配信設計</li>
-            <li class="course-row__tag">問い合わせ〜成約の導線設計</li>
-            <li class="course-row__tag">予約・日程調整の自動化</li>
-          </ul>
-        </div>
+      <div class="course-block">
+        <span class="course-block__num">02</span>
+        <p class="course-block__title">スレッズ自動投稿</p>
+        <p class="course-block__desc">ThreadsへのAI自動投稿を仕組み化。ネタ切れなし、毎日の発信がラクに続く。</p>
       </div>
 
-      <!-- クリエイター -->
-      <div class="course-row course-row--creator fade-up">
-        <div class="course-row__img">
-          <img src="ko-su/LP_1.png" alt="クリエイターコース">
-        </div>
-        <div class="course-row__body">
-          <span class="course-row__badge">クリエイター</span>
-          <p class="course-row__catch">デザイナーに頼まなくても、<br>自分でブランドを表現できる。</p>
-          <p class="course-row__sub">LP・バナー・提案資料まで、AIとCanvaで制作コストをゼロに近づける。センスよりも仕組み。</p>
-          <ul class="course-row__tags">
-            <li class="course-row__tag">LP制作</li>
-            <li class="course-row__tag">訴求バナー・販促画像制作</li>
-            <li class="course-row__tag">Canva &times; AI活用</li>
-            <li class="course-row__tag">提案資料・コンテンツ制作</li>
-          </ul>
-        </div>
+      <div class="course-block">
+        <span class="course-block__num">03</span>
+        <p class="course-block__title">インスタ投稿・リール台本</p>
+        <p class="course-block__desc">Instagramの投稿文・ハッシュタグ・リール台本をAIが代わりに生成。時間を大幅カット。</p>
       </div>
 
-      <!-- 業務効率化 -->
-      <div class="course-row course-row--kouri fade-up">
-        <div class="course-row__img">
-          <img src="ko-su/kontenntu_1.png" alt="業務効率化コース">
-        </div>
-        <div class="course-row__body">
-          <span class="course-row__badge">業務効率化</span>
-          <p class="course-row__catch">毎日の雑務をAIに任せて、<br>本当にやりたい仕事に集中できる。</p>
-          <p class="course-row__sub">議事録・提案書・メール返信を自動生成。繰り返し作業からあなたを解放して、時間と余裕を取り戻す。</p>
-          <ul class="course-row__tags">
-            <li class="course-row__tag">議事録の自動生成</li>
-            <li class="course-row__tag">提案書・見積書の自動作成</li>
-            <li class="course-row__tag">メール文章の自動化</li>
-            <li class="course-row__tag">SNS分析レポート</li>
-            <li class="course-row__tag">FAQ・チャットボット設置</li>
-            <li class="course-row__tag">スケジュール管理の仕組み化</li>
-          </ul>
-        </div>
+      <div class="course-block">
+        <span class="course-block__num">04</span>
+        <p class="course-block__title">リサーチツール</p>
+        <p class="course-block__desc">競合分析・トレンド調査・ターゲット深掘りをAIツールで爆速リサーチ。</p>
+      </div>
+
+      <div class="course-block">
+        <span class="course-block__num">05</span>
+        <p class="course-block__title">アバターでリール撮影</p>
+        <p class="course-block__desc">顔出し不要。AIアバターを使ってリール動画を量産する、新しい発信スタイル。</p>
       </div>
 
     </div>
