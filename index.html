@@ -1253,6 +1253,217 @@
     }
     .footer a { color: rgba(255,255,255,0.45); text-decoration: none; }
     .footer a:hover { color: var(--white); }
+
+    /* ============================
+       STORY（スクール誕生の背景）
+    ============================ */
+    .story { background: var(--white); padding: 100px 0; }
+    .story__inner { max-width: 820px; margin: 0 auto; }
+    .story__lead {
+      font-size: 15px; color: var(--text-sub); line-height: 2;
+      margin-bottom: 36px;
+    }
+    .story__quote {
+      border-left: 4px solid var(--mint);
+      padding: 20px 28px;
+      margin: 36px 0;
+      background: #f0fafa;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .story__quote p {
+      font-size: 16px; line-height: 1.9; color: var(--text);
+      font-style: italic;
+    }
+    .story__quote cite {
+      display: block; margin-top: 10px;
+      font-size: 13px; color: var(--text-sub); font-style: normal;
+    }
+    .story__body {
+      font-size: 15px; color: var(--text); line-height: 2;
+      margin-bottom: 48px;
+    }
+    .story__producers {
+      display: flex; gap: 32px; margin-top: 52px;
+      padding-top: 40px;
+      border-top: 1px solid #e8e0d8;
+      flex-wrap: wrap;
+    }
+    .story__producer {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .story__producer-photo {
+      width: 72px; height: 72px; border-radius: 50%;
+      overflow: hidden; flex-shrink: 0;
+      background: #e8e8e8;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .story__producer-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .story__producer-ph {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #d0eded, #c8d8e8);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .story__producer-label {
+      font-size: 11px; color: var(--text-sub);
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+    .story__producer-name {
+      font-size: 16px; font-weight: 700; color: var(--text);
+    }
+    .story__producer-role {
+      font-size: 13px; color: var(--text-sub); margin-top: 2px;
+    }
+    @media (max-width: 560px) {
+      .story__producers { flex-direction: column; gap: 20px; }
+    }
+
+    /* ============================
+       GALLERY（成果物ギャラリー）
+    ============================ */
+    .gallery { background: #f4f0ec; padding: 100px 0; }
+    .gallery__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 48px;
+    }
+    /* 大きいフレーム（1・2番目） */
+    .gallery__frame:nth-child(1),
+    .gallery__frame:nth-child(2) { grid-column: span 2; aspect-ratio: 16/9; }
+    /* 中フレーム */
+    .gallery__frame:nth-child(3),
+    .gallery__frame:nth-child(4),
+    .gallery__frame:nth-child(5) { grid-column: span 1; aspect-ratio: 4/3; }
+    /* 横長フレーム */
+    .gallery__frame:nth-child(6) { grid-column: span 4; aspect-ratio: 21/6; }
+    /* 小フレーム */
+    .gallery__frame:nth-child(7),
+    .gallery__frame:nth-child(8),
+    .gallery__frame:nth-child(9),
+    .gallery__frame:nth-child(10),
+    .gallery__frame:nth-child(11) { grid-column: span 1; aspect-ratio: 4/3; }
+
+    .gallery__frame {
+      background: #ddd8d2;
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .gallery__frame:hover { transform: scale(1.02); }
+    .gallery__frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .gallery__frame-label {
+      font-size: 11px; letter-spacing: 0.1em;
+      color: rgba(100,90,80,0.6);
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .gallery__frame-ph {
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .gallery__frame-ph svg { opacity: 0.3; }
+    .gallery__note {
+      text-align: center; margin-top: 24px;
+      font-size: 13px; color: var(--text-sub);
+    }
+    @media (max-width: 768px) {
+      .gallery__grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery__frame:nth-child(1),
+      .gallery__frame:nth-child(2) { grid-column: span 2; }
+      .gallery__frame:nth-child(6) { grid-column: span 2; aspect-ratio: 16/7; }
+      .gallery__frame:nth-child(3),
+      .gallery__frame:nth-child(4),
+      .gallery__frame:nth-child(5),
+      .gallery__frame:nth-child(7),
+      .gallery__frame:nth-child(8),
+      .gallery__frame:nth-child(9),
+      .gallery__frame:nth-child(10),
+      .gallery__frame:nth-child(11) { grid-column: span 1; }
+    }
+
+    /* ============================
+       LINE特典告知
+    ============================ */
+    .line-gift {
+      background: linear-gradient(135deg, #3aacac 0%, #5abfbf 60%, #4ab5b5 100%);
+      padding: 80px 0;
+      text-align: center;
+      color: #fff;
+    }
+    .line-gift__label {
+      display: inline-block;
+      font-size: 12px; letter-spacing: 0.15em; font-weight: 600;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      padding: 4px 14px; margin-bottom: 20px;
+      border-radius: 2px;
+    }
+    .line-gift__title {
+      font-size: clamp(22px, 4vw, 32px);
+      font-weight: 800; line-height: 1.5;
+      margin-bottom: 12px;
+    }
+    .line-gift__sub {
+      font-size: 15px; opacity: 0.9; line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .line-gift__card {
+      display: inline-flex; align-items: center; gap: 20px;
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.4);
+      border-radius: var(--radius);
+      padding: 20px 32px; margin-bottom: 36px;
+      text-align: left;
+      backdrop-filter: blur(4px);
+    }
+    .line-gift__card-icon {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: rgba(255,255,255,0.25); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .line-gift__card-name {
+      font-size: 18px; font-weight: 700; margin-bottom: 4px;
+    }
+    .line-gift__card-desc { font-size: 13px; opacity: 0.85; line-height: 1.6; }
+    .line-gift__btn {
+      display: inline-block;
+      background: #fff; color: #3aacac;
+      font-size: 17px; font-weight: 700;
+      padding: 18px 56px; border-radius: 50px;
+      text-decoration: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .line-gift__btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); }
+    .line-gift__note { font-size: 12px; opacity: 0.7; margin-top: 14px; }
+
+    /* ============================
+       CTA前 画像フレーム
+    ============================ */
+    .pre-cta-image {
+      padding: 0;
+      background: var(--cream);
+    }
+    .pre-cta-image img { width: 100%; display: block; }
+    .pre-cta-image__placeholder {
+      width: 100%; min-height: 320px;
+      background: #e8e0d8;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px;
+    }
+    .pre-cta-image__placeholder span {
+      font-size: 13px; color: rgba(100,90,80,0.5);
+      letter-spacing: 0.08em;
+    }
   </style>
 </head>
 <body>
@@ -1292,7 +1503,59 @@
 </section>
 
 
-<!-- 2. 受講生の声 -->
+<!-- 2. スクール誕生ストーリー -->
+<section class="story" id="story">
+  <div class="container">
+    <div class="story__inner">
+      <div class="section-header fade-up">
+        <span class="section-label">OUR STORY</span>
+        <h2>このスクールが<br>生まれた理由</h2>
+      </div>
+
+      <p class="story__lead fade-up">
+        AIを学ぶ場所は増えた。でも、<strong>女性起業家が自分のビジネスにAIを活かせる場所</strong>は、まだほとんど存在しない。
+        難しすぎる内容、届かない言語、遠すぎる目標——そのギャップを埋めたくて、このスクールは生まれました。
+      </p>
+
+      <div class="story__quote fade-up">
+        <p>「私はその業界を変えたいの。だから1個の講座で収まるとかじゃなくて、ステークホルダーが生まれてプラットフォームができて、右腕さんとホルダーさんがマッチングできるようになって、すごい大きくなった。仕組みを作ったから、そうなった。」</p>
+        <cite>— スクール発足MTG より</cite>
+      </div>
+
+      <div class="story__body fade-up">
+        <p>女性起業家一人ひとりの「得意」と「好き」を活かしながら、AIという最強のパートナーを手に入れてほしい。そのために、各分野の専門家が講師に立ち、それぞれの強みで「すぐに使える成果」を届ける10本のフロント講座を作ることにしました。</p>
+        <br>
+        <p>一人の力ではなく、<strong>仲間の力で作る経済圏</strong>。ここから「次世代のAIリーダー」が生まれていく——その確信を持って、このプロジェクトは動き始めています。</p>
+      </div>
+
+      <!-- プロデューサー紹介 -->
+      <div class="story__producers fade-up">
+        <div class="story__producer">
+          <div class="story__producer-ph">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="rgba(90,191,191,0.7)" stroke-width="2.5"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="rgba(90,191,191,0.7)" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="story__producer-label">PRODUCER</p>
+            <p class="story__producer-name">野田 修一</p>
+            <p class="story__producer-role">AIリーダーキャンプ 主宰</p>
+          </div>
+        </div>
+        <div class="story__producer">
+          <div class="story__producer-ph">
+            <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="rgba(232,133,154,0.7)" stroke-width="2.5"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="rgba(232,133,154,0.7)" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="story__producer-label">SUPERVISOR</p>
+            <p class="story__producer-name">大東 めぐみ</p>
+            <p class="story__producer-role">スクール監修・プロデュース</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 受講生の声 -->
 <section class="voices bg-image-section">
   <div class="container">
     <div class="section-header section-header--center fade-up">
@@ -1332,7 +1595,92 @@
   </div>
 </section>
 
-<!-- 4. お悩みパート -->
+<!-- 4. 成果物ギャラリー -->
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="section-label">WORKS</span>
+      <h2>受講生が実際に作ったもの</h2>
+      <p style="margin-top:12px; color:var(--text-sub); font-size:15px; line-height:1.8;">「難しそう」が「できた！」に変わる瞬間。ここにあるのは全部、受講生が自分で作った成果物です。</p>
+    </div>
+
+    <div class="gallery__grid fade-up">
+      <!-- 大きめ2枚 -->
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M14 20h12M14 15h8" stroke="#8a7a6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="gallery__frame-label">LP 成果物</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M14 20h12M14 15h8" stroke="#8a7a6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="gallery__frame-label">LINE 設定画面</span>
+        </div>
+      </div>
+      <!-- 小さめ3枚 -->
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="6" y="4" width="20" height="28" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M10 14h12M10 18h8" stroke="#8a7a6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="gallery__frame-label">デザイン作品</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><polygon points="17,14 28,20 17,26" fill="#8a7a6a" opacity="0.3"/></svg>
+          <span class="gallery__frame-label">アバター動画</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M10 17h20M10 21h14" stroke="#8a7a6a" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span class="gallery__frame-label">スライド資料</span>
+        </div>
+      </div>
+      <!-- 横長1枚 -->
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="48" height="28" viewBox="0 0 48 28" fill="none"><rect x="2" y="2" width="44" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M8 10h32M8 14h24M8 18h16" stroke="#8a7a6a" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <span class="gallery__frame-label">ビフォーアフター / 数字で見る成果</span>
+        </div>
+      </div>
+      <!-- 小さめ5枚 -->
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+          <span class="gallery__frame-label">インスタ投稿</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+          <span class="gallery__frame-label">LP 成果物</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="14" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+          <span class="gallery__frame-label">AI 画像生成</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+          <span class="gallery__frame-label">業務効率化ツール</span>
+        </div>
+      </div>
+      <div class="gallery__frame">
+        <div class="gallery__frame-ph">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none"><rect x="4" y="8" width="32" height="24" rx="2" stroke="#8a7a6a" stroke-width="1.5" stroke-dasharray="4 3"/></svg>
+          <span class="gallery__frame-label">受講生の声</span>
+        </div>
+      </div>
+    </div>
+    <p class="gallery__note fade-up">※ 成果物は順次追加予定</p>
+  </div>
+</section>
+
+<!-- 5. お悩みパート -->
 <section class="worries bg-image-section">
   <div class="container">
     <div class="section-header section-header--center">
@@ -1680,6 +2028,39 @@
     </div>
   </div>
 </section>
+
+<!-- LINE特典告知 -->
+<section class="line-gift" id="gift">
+  <div class="container">
+    <div class="fade-up">
+      <span class="line-gift__label">LINE PRESENT</span>
+      <h2 class="line-gift__title">LINE登録で<br>無料プレゼント</h2>
+      <p class="line-gift__sub">登録してくれた方に、すぐ使えるAI活用ガイドをプレゼント。<br>難しい説明ゼロ。明日から使える内容だけ詰め込みました。</p>
+      <div style="display:flex; justify-content:center;">
+        <div class="line-gift__card">
+          <div class="line-gift__card-icon">
+            <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><rect x="4" y="6" width="28" height="24" rx="3" stroke="white" stroke-width="2"/><path d="M10 13h16M10 18h12M10 23h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <p class="line-gift__card-name">女性起業家のためのChatGPT活用プロンプト集</p>
+            <p class="line-gift__card-desc">発信・提案・LP文章・SNS投稿など30パターン収録<br>PDF 1枚。ダウンロードしてすぐ使えます。</p>
+          </div>
+        </div>
+      </div>
+      <a href="#" class="line-gift__btn">LINEで無料プレゼントを受け取る</a>
+      <p class="line-gift__note">登録無料。いつでも退会できます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA前 画像 -->
+<div class="pre-cta-image">
+  <!-- 画像ができたら下のplaceholderを <img src="画像ファイル名.png" alt=""> に差し替えてください -->
+  <div class="pre-cta-image__placeholder">
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="40" rx="4" stroke="#a09080" stroke-width="1.5" stroke-dasharray="5 4"/><path d="M16 28l6-8 5 6 4-5 6 7" stroke="#a09080" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="15" cy="17" r="3" stroke="#a09080" stroke-width="1.5"/></svg>
+    <span>CTA前の画像をここに配置</span>
+  </div>
+</div>
 
 <!-- 10. CTA -->
 <section class="cta" id="cta">
