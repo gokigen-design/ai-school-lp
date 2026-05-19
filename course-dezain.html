@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>デザインコース | AI LABO</title>
+  <style>
+    :root {
+      --accent:       #e8829a;
+      --accent-dark:  #cc5f7a;
+      --accent-light: #fceef2;
+      --bg:           #faf7f4;
+      --text:         #333333;
+      --text-sub:     #849194;
+      --white:        #ffffff;
+      --radius:       16px;
+      --radius-sm:    8px;
+      --shadow:       0 8px 30px rgba(0,0,0,0.05);
+      --shadow-md:    0 12px 40px rgba(0,0,0,0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: '游ゴシック体', 'Yu Gothic', YuGothic, 'Hiragino Kaku Gothic ProN', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      font-size: 15px;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+    /* NAV */
+    .nav {
+      background-color: var(--white);
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    }
+    .nav__inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav__back {
+      font-size: 14px;
+      color: var(--text-sub);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+    .nav__back:hover { color: var(--accent); }
+    .nav__back::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-left: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 28px;
+      border-radius: 6px;
+      font-family: '游ゴシック体', 'Yu Gothic', YuGothic, 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+      letter-spacing: 0.04em;
+    }
+    .btn--primary {
+      background-color: var(--accent);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(232,130,154,0.3);
+    }
+    .btn--primary:hover {
+      background-color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(232,130,154,0.4);
+    }
+    .btn--lg {
+      padding: 18px 52px;
+      font-size: 17px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      width: 100%;
+      max-height: 480px;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .hero img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .hero__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(232,130,154,0.75) 0%, rgba(180,70,100,0.55) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px;
+    }
+    .hero__label {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      font-weight: 700;
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+    .hero__title {
+      font-size: clamp(26px, 5vw, 44px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.3;
+      margin-bottom: 16px;
+    }
+    .hero__desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.9);
+      max-width: 540px;
+      line-height: 1.8;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 64px 0 48px;
+    }
+    .section-label {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .intro__text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text);
+      max-width: 720px;
+      margin-top: 16px;
+    }
+
+    /* COURSES */
+    .courses {
+      padding: 48px 0 80px;
+    }
+    .courses__heading {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      margin-bottom: 40px;
+      line-height: 1.4;
+    }
+    .courses__heading span {
+      color: var(--accent);
+    }
+    .courses__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 768px) {
+      .courses__grid { grid-template-columns: 1fr; }
+      .hero__overlay { padding: 32px 24px; }
+      .hero img { height: 320px; }
+      .container { padding: 0 20px; }
+    }
+
+    /* CARD */
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .card__photo-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background-color: var(--accent-light);
+      position: relative;
+    }
+    .card__photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .card__placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .card__body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .card__number {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .card__title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .card__instructor {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      flex-shrink: 0;
+      border: 2px solid var(--accent-light);
+    }
+    .card__avatar-placeholder {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--accent-light);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .card__instructor-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .card__name {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .card__role {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.4;
+    }
+    .card__desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #555;
+      flex: 1;
+    }
+    .card__tag {
+      display: inline-block;
+      margin-top: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      background-color: var(--accent-light);
+      padding: 4px 12px;
+      border-radius: 4px;
+      letter-spacing: 0.06em;
+      align-self: flex-start;
+    }
+
+    /* CTA BOTTOM */
+    .cta-bottom {
+      background-color: var(--accent);
+      padding: 72px 0;
+      text-align: center;
+    }
+    .cta-bottom__lead {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.8);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cta-bottom__title {
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.5;
+      margin-bottom: 32px;
+    }
+    .cta-bottom__note {
+      font-size: 13px;
+      color: rgba(255,255,255,0.75);
+      margin-top: 20px;
+    }
+    .cta-bottom__back {
+      display: inline-block;
+      margin-top: 28px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      transition: color 0.2s;
+    }
+    .cta-bottom__back:hover { color: var(--white); }
+
+    .btn--white {
+      background-color: var(--white);
+      color: var(--accent);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .btn--white:hover {
+      background-color: #fdf5f7;
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__back">AI LABOトップへ戻る</a>
+    <a href="#" class="btn btn--primary">LINEで登録する</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="ko-su/dezainn.png" alt="デザインコース">
+  <div class="hero__overlay">
+    <span class="hero__label">AI LABO / Course</span>
+    <h1 class="hero__title">デザインコース</h1>
+    <p class="hero__desc">CanvaとAIを組み合わせて、プロ品質のデザインを自分で作る。外注ゼロ・即戦力スキル。</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <span class="section-label">About This Course</span>
+    <h2 style="font-size: clamp(20px, 4vw, 28px); font-weight: 700; margin-top: 8px; line-height: 1.4;">デザインを外注し続けていませんか？</h2>
+    <p class="intro__text">
+      「デザインはセンスがないからプロに頼むしかない」——そう思っていませんか。
+      CanvaとAIを使えば、センスに頼らず再現性のあるデザインが作れます。
+      LPからブランドビジュアルまで、自分でデザインできるようになることで、スピードとコストが劇的に変わります。
+    </p>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section class="courses">
+  <div class="container">
+    <h2 class="courses__heading">コース一覧 <span>— デザイン</span></h2>
+    <div class="courses__grid">
+
+      <!-- COURSE 01 -->
+      <div class="card">
+        <div class="card__photo-wrap">
+          <img src="ko-su/LP_1.png" alt="LP制作">
+        </div>
+        <div class="card__body">
+          <span class="card__number">Course 01</span>
+          <h3 class="card__title">LP制作</h3>
+          <div class="card__instructor">
+            <div class="card__avatar-placeholder">あや</div>
+            <div class="card__instructor-info">
+              <span class="card__name">あや</span>
+              <span class="card__role">LP制作・AI活用デザイン専門</span>
+            </div>
+          </div>
+          <p class="card__desc">ゼロからLPを作る全工程を学ぶ。CanvaとAIを使いこなし、自分でLPが作れるように。</p>
+          <span class="card__tag">LP制作</span>
+        </div>
+      </div>
+
+      <!-- COURSE 02 -->
+      <div class="card">
+        <div class="card__photo-wrap">
+          <img src="menber/chakana.png" alt="ビジュアルデザイン全般">
+        </div>
+        <div class="card__body">
+          <span class="card__number">Course 02</span>
+          <h3 class="card__title">ビジュアルデザイン全般</h3>
+          <div class="card__instructor">
+            <img src="menber/chakana.png" alt="ちゃかなさん" class="card__avatar">
+            <div class="card__instructor-info">
+              <span class="card__name">ちゃかなさん</span>
+              <span class="card__role">デザインディレクション専門</span>
+            </div>
+          </div>
+          <p class="card__desc">統一感のあるブランドビジュアルを作る。カラー・フォント・レイアウトの基礎から。</p>
+          <span class="card__tag">ブランドデザイン</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <div class="container">
+    <p class="cta-bottom__lead">Line Registration</p>
+    <h2 class="cta-bottom__title">このコースが気になる？<br>まずはLINEで詳細を受け取ろう</h2>
+    <a href="#" class="btn btn--white btn--lg">LINEで登録する</a>
+    <p class="cta-bottom__note">無料で受け取れます。登録後はいつでも解除できます。</p>
+    <br>
+    <a href="index.html" class="cta-bottom__back">← コース一覧に戻る</a>
+  </div>
+</section>
+
+</body>
+</html>

@@ -782,17 +782,28 @@
 
     /* 2カラムイントロ */
     /* 4コースカテゴリーカード */
+    /* コース一覧概要画像 */
+    .courses__overview {
+      margin-bottom: 48px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .courses__overview img { width: 100%; display: block; }
+
     .course-cats {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
-      margin-bottom: 60px;
+      margin-bottom: 0;
     }
     .course-cat {
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow-md);
       transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
     }
     .course-cat:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(0,0,0,0.12); }
     .course-cat__img { aspect-ratio: 4/3; overflow: hidden; }
@@ -800,11 +811,49 @@
     .course-cat__label {
       background: var(--cat-color, #5abfbf);
       color: #fff;
-      padding: 16px 22px;
+      padding: 14px 22px;
       font-weight: 700;
       font-size: 16px;
       letter-spacing: 0.04em;
     }
+    .course-cat__footer {
+      padding: 16px;
+      text-align: center;
+      background: #fff;
+      margin-top: auto;
+    }
+    .course-cat__link {
+      display: inline-block;
+      color: var(--cat-color, #5abfbf);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 8px 28px;
+      border: 2px solid var(--cat-color, #5abfbf);
+      border-radius: 50px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .course-cat__link:hover {
+      background: var(--cat-color, #5abfbf);
+      color: #fff;
+    }
+
+    /* コースセクションLINE誘導 */
+    .courses__line-cta {
+      margin-top: 52px;
+      text-align: center;
+      padding: 44px 32px;
+      background: rgba(255,255,255,0.88);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+    .courses__line-cta p {
+      margin-bottom: 22px;
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.8;
+    }
+
     @media (max-width: 560px) {
       .course-cats { grid-template-columns: 1fr; }
     }
@@ -1214,7 +1263,7 @@
     <div class="nav__inner">
       <a href="#" class="nav__logo">AI <span>LABO</span></a>
       <div class="nav__cta">
-        <a href="#cta" class="btn btn--primary">無料説明会に参加する</a>
+        <a href="#" class="btn btn--primary">LINEで登録する</a>
       </div>
     </div>
   </div>
@@ -1507,155 +1556,52 @@
     <div class="section-header section-header--center fade-up">
       <span class="section-label">COURSES</span>
       <h2>学べるコース一覧</h2>
+      <p style="margin-top:12px; color:var(--text-sub); font-size:15px; line-height:1.8;">各分野の専門家が、あなたのビジネスに直結するスキルを直接教えます。</p>
+    </div>
+
+    <!-- コース全体一覧画像 -->
+    <div class="courses__overview fade-up">
+      <img src="ko-suitirann.png" alt="AI LABOコース一覧">
     </div>
 
     <!-- 4つのコースカテゴリーカード -->
     <div class="course-cats fade-up">
       <div class="course-cat" style="--cat-color:#5abfbf;">
-        <div class="course-cat__img"><img src="haltusinn.png" alt="発信強化コース"></div>
-        <div class="course-cat__label">発信強化</div>
+        <div class="course-cat__img"><img src="ko-su/haltusinn.png" alt="発信強化コース"></div>
+        <div class="course-cat__label">発信強化コース</div>
+        <div class="course-cat__footer">
+          <a href="course-hatsusin.html" class="course-cat__link">詳細はこちら</a>
+        </div>
       </div>
       <div class="course-cat" style="--cat-color:#9b7ec8;">
-        <div class="course-cat__img"><img src="sikumi.png" alt="自動化コース"></div>
-        <div class="course-cat__label">自動化</div>
+        <div class="course-cat__img"><img src="ko-su/sikumi.png" alt="自動化コース"></div>
+        <div class="course-cat__label">自動化コース</div>
+        <div class="course-cat__footer">
+          <a href="course-jidouka.html" class="course-cat__link">詳細はこちら</a>
+        </div>
       </div>
       <div class="course-cat" style="--cat-color:#e8829a;">
-        <div class="course-cat__img"><img src="dezainn.png" alt="デザインコース"></div>
-        <div class="course-cat__label">デザイン</div>
+        <div class="course-cat__img"><img src="ko-su/dezainn.png" alt="デザインコース"></div>
+        <div class="course-cat__label">デザインコース</div>
+        <div class="course-cat__footer">
+          <a href="course-dezain.html" class="course-cat__link">詳細はこちら</a>
+        </div>
       </div>
       <div class="course-cat" style="--cat-color:#c9a96e;">
-        <div class="course-cat__img"><img src="gyoumukourituka.png" alt="事業効率化コース"></div>
-        <div class="course-cat__label">事業効率化</div>
+        <div class="course-cat__img"><img src="ko-su/gyoumukourituka.png" alt="事業効率化コース"></div>
+        <div class="course-cat__label">事業効率化コース</div>
+        <div class="course-cat__footer">
+          <a href="course-kouri.html" class="course-cat__link">詳細はこちら</a>
+        </div>
       </div>
     </div>
 
-    <!-- 発信コース詳細 -->
-    <div class="courses__heading fade-up">
-      <h2>発信コース</h2>
-      <p class="courses__lead">SNS運用をAIで仕組み化。忙しい起業家でも、毎日の発信が驚くほどラクに続く。<br>各コースは90分の実践形式。当日から使えるスキルを担当講師が直接教えます。</p>
+    <!-- LINE登録誘導 -->
+    <div class="courses__line-cta fade-up">
+      <p>コースの開講スケジュール・最新情報はLINEでいち早くお届けします。<br>登録無料。いつでも解除できます。</p>
+      <a href="#" class="btn btn--primary btn--lg">LINEで最新情報を受け取る</a>
     </div>
 
-    <!-- 講師カードグリッド -->
-    <div class="instructor-cards">
-
-      <!-- 01 世界観・ブランドマップ（講師：あやのさん） -->
-      <div class="instructor-card fade-up" style="--card-accent:#5abfbf;">
-        <div class="instructor-card__photo">
-          <img src="menber/ayano.png" alt="あやのさん">
-        </div>
-        <div class="instructor-card__body">
-          <span class="instructor-card__num">COURSE 01</span>
-          <p class="instructor-card__title">世界観・ブランドマップ</p>
-          <div class="instructor-card__teacher">
-            <div class="instructor-card__teacher-photo">
-              <img src="menber/ayano.png" alt="あやのさん">
-            </div>
-            <div>
-              <p class="instructor-card__teacher-name">あやのさん</p>
-              <p class="instructor-card__teacher-role">ブランディング専門</p>
-            </div>
-          </div>
-          <p class="instructor-card__desc">あなたらしい世界観を言語化し、発信の軸となるブランドの地図を作るワークショップ（2時間）。</p>
-        </div>
-      </div>
-
-      <!-- 02 スレッズ自動投稿 -->
-      <div class="instructor-card fade-up" style="--card-accent:#9b7ec8;">
-        <div class="instructor-card__photo">
-          <div class="instructor-card__ph">
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-            <span>講師写真を配置</span>
-          </div>
-        </div>
-        <div class="instructor-card__body">
-          <span class="instructor-card__num">COURSE 02</span>
-          <p class="instructor-card__title">スレッズ自動投稿</p>
-          <div class="instructor-card__teacher">
-            <div class="instructor-card__teacher-photo" style="background-color:#9b7ec8;">
-              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
-              <p class="instructor-card__teacher-role">SNS自動化専門</p>
-            </div>
-          </div>
-          <p class="instructor-card__desc">ThreadsへのAI自動投稿を仕組み化。ネタ切れなし、毎日の発信がラクに続く。</p>
-        </div>
-      </div>
-
-      <!-- 03 インスタ投稿・リール台本 -->
-      <div class="instructor-card fade-up" style="--card-accent:#e8829a;">
-        <div class="instructor-card__photo">
-          <div class="instructor-card__ph">
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-            <span>講師写真を配置</span>
-          </div>
-        </div>
-        <div class="instructor-card__body">
-          <span class="instructor-card__num">COURSE 03</span>
-          <p class="instructor-card__title">インスタ投稿・リール台本</p>
-          <div class="instructor-card__teacher">
-            <div class="instructor-card__teacher-photo" style="background-color:#e8829a;">
-              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
-              <p class="instructor-card__teacher-role">Instagram運用専門</p>
-            </div>
-          </div>
-          <p class="instructor-card__desc">Instagramの投稿文・ハッシュタグ・リール台本をAIが生成。発信時間を大幅カット。</p>
-        </div>
-      </div>
-
-      <!-- 04 リサーチツール -->
-      <div class="instructor-card fade-up" style="--card-accent:#c9a96e;">
-        <div class="instructor-card__photo">
-          <div class="instructor-card__ph">
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-            <span>講師写真を配置</span>
-          </div>
-        </div>
-        <div class="instructor-card__body">
-          <span class="instructor-card__num">COURSE 04</span>
-          <p class="instructor-card__title">リサーチツール</p>
-          <div class="instructor-card__teacher">
-            <div class="instructor-card__teacher-photo" style="background-color:#c9a96e;">
-              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
-              <p class="instructor-card__teacher-role">AIリサーチ専門</p>
-            </div>
-          </div>
-          <p class="instructor-card__desc">競合分析・トレンド調査・ターゲット深掘りをAIツールで爆速リサーチ。</p>
-        </div>
-      </div>
-
-      <!-- 05 アバターでリール撮影 -->
-      <div class="instructor-card fade-up" style="--card-accent:#5aa8bf;">
-        <div class="instructor-card__photo">
-          <div class="instructor-card__ph">
-            <svg width="72" height="72" viewBox="0 0 72 72" fill="none"><circle cx="36" cy="26" r="16" stroke="white" stroke-width="2.5"/><path d="M8 70c0-15.464 12.536-28 28-28s28 12.536 28 28" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-            <span>講師写真を配置</span>
-          </div>
-        </div>
-        <div class="instructor-card__body">
-          <span class="instructor-card__num">COURSE 05</span>
-          <p class="instructor-card__title">アバターでリール撮影</p>
-          <div class="instructor-card__teacher">
-            <div class="instructor-card__teacher-photo" style="background-color:#5aa8bf;">
-              <svg width="20" height="20" viewBox="0 0 36 36" fill="none"><circle cx="18" cy="13" r="7" stroke="white" stroke-width="2"/><path d="M5 33c0-7.18 5.82-13 13-13s13 5.82 13 13" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <div>
-              <p class="instructor-card__teacher-name">担当講師名（予定）</p>
-              <p class="instructor-card__teacher-role">動画・アバター生成専門</p>
-            </div>
-          </div>
-          <p class="instructor-card__desc">顔出し不要。AIアバターを使ってリール動画を量産する、新しい発信スタイル。</p>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -1740,14 +1686,14 @@
   <div class="container">
     <div class="cta__inner">
       <span class="section-label">GET STARTED</span>
-      <h2 class="cta__title">まずは無料説明会へ</h2>
+      <h2 class="cta__title">まずはLINEで登録しよう</h2>
       <p class="cta__sub">
-        どのコースが合っているか、自分の事業にどう活かせるか。<br>
-        説明会でまるごとお話しします。
+        コース情報・無料説明会の日程・受講生の声を<br>
+        LINEでいち早くお届けします。登録は無料です。
       </p>
       <div class="cta__buttons">
-        <a href="#" class="btn btn--primary btn--lg">無料説明会に参加する</a>
-        <a href="#" class="btn btn--outline">LINEで詳細を見る</a>
+        <a href="#" class="btn btn--primary btn--lg btn--shine">LINEで無料登録する</a>
+        <a href="#" class="btn btn--outline">無料説明会に参加する</a>
         <a href="#courses" class="cta__text-link">コース一覧を見る</a>
       </div>
       <p class="cta__note">※ 参加後の勧誘はありません。疑問・質問は何でもどうぞ。</p>
