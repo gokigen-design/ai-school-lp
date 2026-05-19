@@ -1449,10 +1449,18 @@
        CTA前 画像フレーム
     ============================ */
     .pre-cta-image {
-      padding: 0;
+      padding: 48px 0 0;
       background: var(--cream);
+      text-align: center;
     }
-    .pre-cta-image img { width: 100%; display: block; }
+    .pre-cta-image img {
+      max-width: 600px;
+      width: 80%;
+      display: inline-block;
+    }
+    @media (max-width: 768px) {
+      .pre-cta-image img { width: 88%; }
+    }
     .pre-cta-image__placeholder {
       width: 100%; min-height: 320px;
       background: #e8e0d8;
@@ -2076,8 +2084,8 @@
   </div>
 </section>
 
-<!-- 6. 講師紹介 -->
-<section class="instructors" id="instructors">
+<!-- 6. 講師紹介（各コース詳細ページに移動・本体LPでは非表示） -->
+<section class="instructors" id="instructors" style="display:none;">
   <div class="container">
     <div class="section-header section-header--center fade-up">
       <span class="section-label">INSTRUCTORS</span>
