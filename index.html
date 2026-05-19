@@ -16,7 +16,7 @@
       --text:         #333333;
       --text-sub:     #849194;
       --white:        #ffffff;
-      --radius:       16px;
+      --radius:       6px;
       --radius-sm:    8px;
       --radius-pill:  6px;
       --shadow:       0 8px 30px rgba(0,0,0,0.05);
@@ -1464,6 +1464,128 @@
       font-size: 13px; color: rgba(100,90,80,0.5);
       letter-spacing: 0.08em;
     }
+
+    /* AI格差セクション */
+    .ai-gap {
+      background: var(--cream);
+      padding: 100px 0;
+      border-top: 1px solid #e8e0d8;
+    }
+    .ai-gap__inner { max-width: 860px; margin: 0 auto; }
+    .ai-gap__split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin: 48px 0;
+      border: 1px solid #ddd8d2;
+    }
+    .ai-gap__col {
+      padding: 40px 36px;
+    }
+    .ai-gap__col--before {
+      background: #f0ebe6;
+    }
+    .ai-gap__col--after {
+      background: #e8f5f5;
+    }
+    .ai-gap__col-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .ai-gap__col--before .ai-gap__col-label { color: #a09080; }
+    .ai-gap__col--after .ai-gap__col-label { color: var(--mint); }
+    .ai-gap__col-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .ai-gap__col-list {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .ai-gap__col-list li {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text-sub);
+      padding-left: 16px;
+      position: relative;
+    }
+    .ai-gap__col-list li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 12px;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .ai-gap__col--before .ai-gap__col-list li::before { background: #c0b0a0; }
+    .ai-gap__col--after .ai-gap__col-list li::before { background: var(--mint); }
+    .ai-gap__message {
+      text-align: center;
+      padding: 40px 0 0;
+    }
+    .ai-gap__message-strong {
+      display: block;
+      font-size: clamp(20px, 3vw, 26px);
+      font-weight: 800;
+      color: var(--mint);
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+    .ai-gap__message p {
+      font-size: 15px;
+      color: var(--text-sub);
+      line-height: 1.9;
+    }
+    @media (max-width: 640px) {
+      .ai-gap__split { grid-template-columns: 1fr; }
+    }
+
+    /* 講師紹介セクション */
+    .instructors {
+      background: var(--white);
+      padding: 100px 0;
+    }
+
+    /* 最終LINE CTA */
+    .line-cta-final { background: var(--white); }
+    .line-cta-final__body {
+      padding: 80px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #3aacac 0%, #5abfbf 60%, #4ab5b5 100%);
+    }
+    .line-cta-final__inner { max-width: 600px; margin: 0 auto; }
+    .line-cta-final__inner .section-label { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.5); }
+    .line-cta-final__title {
+      font-size: clamp(24px, 4vw, 36px);
+      font-weight: 800;
+      color: #fff;
+      margin: 16px 0 12px;
+      line-height: 1.4;
+    }
+    .line-cta-final__sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.9;
+      margin-bottom: 32px;
+    }
+    .line-cta-final__inner .btn--primary {
+      background: #fff;
+      color: #3aacac;
+      border-color: #fff;
+    }
+    .line-cta-final__inner .btn--primary:hover {
+      background: rgba(255,255,255,0.9);
+    }
+    .line-cta-final__note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.65);
+    }
   </style>
 </head>
 <body>
@@ -1503,8 +1625,48 @@
 </section>
 
 
-<!-- 2. スクール誕生ストーリー -->
-<section class="story" id="story">
+<!-- 2. AI格差セクション -->
+<section class="ai-gap">
+  <div class="container">
+    <div class="ai-gap__inner">
+      <div class="section-header fade-up">
+        <span class="section-label">AI GAP</span>
+        <h2>AIを使っている人と<br>そうでない人。<br>今まさに、差がついています。</h2>
+      </div>
+      <div class="ai-gap__split fade-up">
+        <div class="ai-gap__col ai-gap__col--before">
+          <span class="ai-gap__col-label">AIを使っていない人</span>
+          <p class="ai-gap__col-title">毎日同じ作業を<br>繰り返している</p>
+          <ul class="ai-gap__col-list">
+            <li>投稿文を毎回ゼロから書いている</li>
+            <li>LINE配信の設定に何時間もかかる</li>
+            <li>デザインを外注するたびにコストがかさむ</li>
+            <li>「やりたいこと」より「こなす作業」が多い</li>
+            <li>時間が足りなくてSNSが止まる</li>
+          </ul>
+        </div>
+        <div class="ai-gap__col ai-gap__col--after">
+          <span class="ai-gap__col-label">AIを使っている人</span>
+          <p class="ai-gap__col-title">同じ時間で<br>10倍のことができる</p>
+          <ul class="ai-gap__col-list">
+            <li>投稿文・ハッシュタグをAIが数秒で生成</li>
+            <li>LINEステップ配信を自動で設計・運用</li>
+            <li>LPもバナーも自分でサクッと作れる</li>
+            <li>空いた時間を本当にやりたい仕事へ</li>
+            <li>発信が止まらず、集客が途切れない</li>
+          </ul>
+        </div>
+      </div>
+      <div class="ai-gap__message fade-up">
+        <strong class="ai-gap__message-strong">でも、今からでも十分間に合います。</strong>
+        <p>AIは難しくありません。使い方を知れば、誰でも仕事が変わります。<br>このスクールは「今日から使える」を大切にして設計されています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ↓ 削除：スクール誕生ストーリー（ALC申込ページへ移動） -->
+<section class="story" id="story" style="display:none;">
   <div class="container">
     <div class="story__inner">
       <div class="section-header fade-up">
@@ -1555,7 +1717,75 @@
   </div>
 </section>
 
-<!-- 3. 成果物ギャラリー -->
+<!-- 3. AIで叶うこと -->
+<section class="future">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">WHAT YOU CAN DO</span>
+      <h2>AIで叶う5つのこと</h2>
+    </div>
+    <div class="future__grid">
+
+      <div class="future-card fade-up">
+        <div class="future-card__badge">01</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">仕事がラクになる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/1_aikon.png" alt="仕事がラクになる"></div>
+          <p class="future-card__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
+        </div>
+      </div>
+
+      <div class="future-card fade-up delay-1">
+        <div class="future-card__badge">02</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">好きなことに集中できる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/2_aikon.png" alt="好きなことに集中できる"></div>
+          <p class="future-card__desc">雑務から解放されて、クリエイティブな仕事・企画に集中できる環境を作る。</p>
+        </div>
+      </div>
+
+      <div class="future-card fade-up delay-2">
+        <div class="future-card__badge">03</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">自分の事業を伸ばせる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/3_aikon.png" alt="自分の事業を伸ばせる"></div>
+          <p class="future-card__desc">LP・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
+        </div>
+      </div>
+
+      <div class="future-card fade-up delay-1">
+        <div class="future-card__badge">04</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">クライアントワークの幅が広がる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/4_aikon.png" alt="クライアントワークの幅が広がる"></div>
+          <p class="future-card__desc">AI活用スキルをサービスに加えて、単価アップと差別化を同時に実現できる。</p>
+        </div>
+      </div>
+
+      <div class="future-card fade-up delay-2">
+        <div class="future-card__badge">05</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">新しい収入源を作れる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt="新しい収入源を作れる"></div>
+          <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3b. 成果物ギャラリー -->
 <section class="gallery" id="gallery">
   <div class="container">
     <div class="section-header section-header--center fade-up">
@@ -1640,48 +1870,7 @@
   </div>
 </section>
 
-<!-- 4. AIリーダーキャンプ受講生の声 -->
-<section class="voices bg-image-section">
-  <div class="container">
-    <div class="section-header section-header--center fade-up">
-      <span class="section-label">VOICES</span>
-      <h2>AIリーダーキャンプ<br>受講生の声</h2>
-      <p style="margin-top:12px; color:var(--text-sub); font-size:14px; line-height:1.8;">このスクールの上位プログラム「AIリーダーキャンプ」で、実際にAIを学んだ先輩たちの変化です。</p>
-    </div>
-    <div class="voices__images fade-up" id="voicesSlider">
-      <div class="voice-img"><img src="menber/aki_1.png" alt="受講生の声 aki"></div>
-      <div class="voice-img"><img src="menber/momo_1.png" alt="受講生の声 momo"></div>
-      <div class="voice-img"><img src="menber/naka_1.png" alt="受講生の声 naka"></div>
-      <div class="voice-img"><img src="menber/siori_1.png" alt="受講生の声 siori"></div>
-      <div class="voice-img"><img src="menber/yumi_1.png" alt="受講生の声 yumi"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 5. 動画インタビュー -->
-<section class="interview">
-  <div class="container">
-    <div class="interview__inner">
-      <div class="interview__video-wrap">
-        <div class="interview__video-ratio">
-          <iframe src="https://player.vimeo.com/video/1182993980?h=f7ea20cec9" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" allowfullscreen title="AIキャンプ_成果発表＆受講生の声"></iframe>
-        </div>
-      </div>
-      <div class="interview__text" style="max-width:640px;">
-        <span class="section-label">ALC STORY</span>
-        <h2>AIリーダーキャンプで<br>起きたリアルな変化</h2>
-        <p>
-          受講前と後で、何がどう変わったか。<br>
-          仕事の仕方、事業の進み方、毎日の時間の使い方——<br>
-          先輩受講生がそのまま語ってくれています。
-        </p>
-        <p class="interview__note" style="margin-top:16px;">※ AIリーダーキャンプ（上位プログラム）受講生インタビュー</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 6. お悩みパート -->
+<!-- 4. こんなお悩みパート -->
 <section class="worries bg-image-section">
   <div class="container">
     <div class="section-header section-header--center">
@@ -1773,76 +1962,9 @@
   </div>
 </section>
 
-<!-- 7. AIで叶う未来 -->
-<section class="future">
-  <div class="container">
-    <div class="section-header">
-      <span class="section-label">WHAT YOU CAN DO</span>
-      <h2>AIで叶う5つのこと</h2>
-    </div>
-    <div class="future__grid">
 
-      <div class="future-card fade-up">
-        <div class="future-card__badge">01</div>
-        <div class="future-card__header">
-          <h3 class="future-card__title">仕事がラクになる</h3>
-        </div>
-        <div class="future-card__body">
-          <div class="future-card__icon"><img src="アイコン/1_aikon.png" alt="仕事がラクになる"></div>
-          <p class="future-card__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
-        </div>
-      </div>
-
-      <div class="future-card fade-up delay-1">
-        <div class="future-card__badge">02</div>
-        <div class="future-card__header">
-          <h3 class="future-card__title">好きなことに集中できる</h3>
-        </div>
-        <div class="future-card__body">
-          <div class="future-card__icon"><img src="アイコン/2_aikon.png" alt="好きなことに集中できる"></div>
-          <p class="future-card__desc">雑務から解放されて、クリエイティブな仕事・企画に集中できる環境を作る。</p>
-        </div>
-      </div>
-
-      <div class="future-card fade-up delay-2">
-        <div class="future-card__badge">03</div>
-        <div class="future-card__header">
-          <h3 class="future-card__title">自分の事業を伸ばせる</h3>
-        </div>
-        <div class="future-card__body">
-          <div class="future-card__icon"><img src="アイコン/3_aikon.png" alt="自分の事業を伸ばせる"></div>
-          <p class="future-card__desc">LP・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
-        </div>
-      </div>
-
-      <div class="future-card fade-up delay-1">
-        <div class="future-card__badge">04</div>
-        <div class="future-card__header">
-          <h3 class="future-card__title">クライアントワークの幅が広がる</h3>
-        </div>
-        <div class="future-card__body">
-          <div class="future-card__icon"><img src="アイコン/4_aikon.png" alt="クライアントワークの幅が広がる"></div>
-          <p class="future-card__desc">AI活用スキルをサービスに加えて、単価アップと差別化を同時に実現できる。</p>
-        </div>
-      </div>
-
-      <div class="future-card fade-up delay-2">
-        <div class="future-card__badge">05</div>
-        <div class="future-card__header">
-          <h3 class="future-card__title">新しい収入源を作れる</h3>
-        </div>
-        <div class="future-card__body">
-          <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt="新しい収入源を作れる"></div>
-          <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- 8. 選ばれる理由 -->
-<section class="reasons bg-image-section">
+<!-- 選ばれる理由（ALC申込ページへ移動） -->
+<section class="reasons bg-image-section" style="display:none;">
   <div class="container">
     <div class="section-header">
       <span class="section-label">WHY US</span>
@@ -1924,14 +2046,14 @@
       </div>
       <div class="course-cat" style="--cat-color:#9b7ec8;">
         <div class="course-cat__img"><img src="ko-su/sikumi.png" alt="自動化コース"></div>
-        <div class="course-cat__label">自動化コース</div>
+        <div class="course-cat__label">仕組み化コース</div>
         <div class="course-cat__footer">
           <a href="course-jidouka.html" class="course-cat__link">詳細はこちら</a>
         </div>
       </div>
       <div class="course-cat" style="--cat-color:#e8829a;">
-        <div class="course-cat__img"><img src="ko-su/dezainn.png" alt="デザインコース"></div>
-        <div class="course-cat__label">デザインコース</div>
+        <div class="course-cat__img"><img src="ko-su/dezainn.png" alt="クリエイターコース"></div>
+        <div class="course-cat__label">クリエイターコース</div>
         <div class="course-cat__footer">
           <a href="course-dezain.html" class="course-cat__link">詳細はこちら</a>
         </div>
@@ -1954,7 +2076,118 @@
   </div>
 </section>
 
-<!-- 8. ビジョン -->
+<!-- 6. 講師紹介 -->
+<section class="instructors" id="instructors">
+  <div class="container">
+    <div class="section-header section-header--center fade-up">
+      <span class="section-label">INSTRUCTORS</span>
+      <h2>講師紹介</h2>
+      <p style="margin-top:12px; color:var(--text-sub); font-size:15px; line-height:1.8;">各分野の専門家が、あなたのビジネスに直結するスキルを直接教えます。</p>
+    </div>
+
+    <div class="instructor-cards">
+
+      <div class="instructor-card fade-up" style="--card-accent:#5abfbf;">
+        <div class="instructor-card__photo"><img src="menber/ayano.png" alt="あやのさん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">発信強化 / ブランディング</span>
+          <p class="instructor-card__title">世界観・ブランドマップ</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/ayano.png" alt="あやのさん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">あやのさん</p>
+              <p class="instructor-card__teacher-role">ブランディング専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">あなたらしい世界観を言語化し、発信の軸となるブランドの地図を作るワークショップ。</p>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up" style="--card-accent:#9b7ec8;">
+        <div class="instructor-card__photo"><img src="menber/aki.png" alt="あきさん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">仕組み化 / LINE自動化</span>
+          <p class="instructor-card__title">LINE配信をまるごと自動化</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/aki.png" alt="あきさん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">あきさん</p>
+              <p class="instructor-card__teacher-role">LINE自動化専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">LINEステップ配信をゼロから構築。顧客育成・セールス誘導を自動化する仕組みを作る。</p>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up" style="--card-accent:#e8829a;">
+        <div class="instructor-card__photo"><img src="menber/chakana.png" alt="ちゃかなさん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">クリエイター / デザイン</span>
+          <p class="instructor-card__title">LP・ビジュアルデザイン</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/chakana.png" alt="ちゃかなさん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">ちゃかなさん</p>
+              <p class="instructor-card__teacher-role">デザインディレクション専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">統一感のあるブランドビジュアルを作る。Canva×AIでLP・バナー・提案資料まで。</p>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up" style="--card-accent:#e8829a;">
+        <div class="instructor-card__photo"><img src="menber/yumi.png" alt="ゆみさん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">クリエイター / アバター</span>
+          <p class="instructor-card__title">アバター・AI画像生成</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/yumi.png" alt="ゆみさん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">ゆみさん</p>
+              <p class="instructor-card__teacher-role">アバター・画像生成専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">顔出し不要。AIアバターを使ってリール動画を量産する新しい発信スタイルを習得。</p>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up" style="--card-accent:#c9a96e;">
+        <div class="instructor-card__photo"><img src="menber/tuboruri.png" alt="瑠璃子さん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">業務効率化 / コンテンツ</span>
+          <p class="instructor-card__title">コンテンツビジネス化</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/tuboruri.png" alt="瑠璃子さん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">瑠璃子さん</p>
+              <p class="instructor-card__teacher-role">コンテンツ収益化専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">作ったコンテンツを売れる形にする。企画・設計・価格設定・販売まで一連の流れを習得。</p>
+        </div>
+      </div>
+
+      <div class="instructor-card fade-up" style="--card-accent:#c9a96e;">
+        <div class="instructor-card__photo"><img src="menber/siori.png" alt="しおりさん"></div>
+        <div class="instructor-card__body">
+          <span class="instructor-card__num">業務効率化 / スライド</span>
+          <p class="instructor-card__title">スライド・資料制作</p>
+          <div class="instructor-card__teacher">
+            <div class="instructor-card__teacher-photo"><img src="menber/siori.png" alt="しおりさん"></div>
+            <div>
+              <p class="instructor-card__teacher-name">しおりさん</p>
+              <p class="instructor-card__teacher-role">スライド・アプリ開発専門</p>
+            </div>
+          </div>
+          <p class="instructor-card__desc">AIで資料作成を爆速化。提案書・講座スライド・議事録まとめをサクッと仕上げる。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 7. ビジョン -->
 <section class="vision">
   <div class="vision__bg">
     <img src="vison.png" alt="">
@@ -2030,57 +2263,23 @@
   </div>
 </section>
 
-<!-- present画像①（LINE特典告知上部） -->
-<div class="pre-cta-image">
-  <img src="present.png" alt="LINE登録プレゼント">
-</div>
-
-<!-- LINE特典告知 -->
-<section class="line-gift" id="gift">
-  <div class="container">
-    <div class="fade-up">
-      <span class="line-gift__label">LINE PRESENT</span>
-      <h2 class="line-gift__title">LINE登録で<br>無料プレゼント</h2>
-      <p class="line-gift__sub">登録してくれた方に、すぐ使えるAI活用ガイドをプレゼント。<br>難しい説明ゼロ。明日から使える内容だけ詰め込みました。</p>
-      <div style="display:flex; justify-content:center;">
-        <div class="line-gift__card">
-          <div class="line-gift__card-icon">
-            <svg width="28" height="28" viewBox="0 0 36 36" fill="none"><rect x="4" y="6" width="28" height="24" rx="3" stroke="white" stroke-width="2"/><path d="M10 13h16M10 18h12M10 23h8" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-          </div>
-          <div>
-            <p class="line-gift__card-name">女性起業家のためのChatGPT活用プロンプト集</p>
-            <p class="line-gift__card-desc">発信・提案・LP文章・SNS投稿など30パターン収録<br>PDF 1枚。ダウンロードしてすぐ使えます。</p>
-          </div>
-        </div>
-      </div>
-      <a href="#" class="line-gift__btn">LINEで無料プレゼントを受け取る</a>
-      <p class="line-gift__note">登録無料。いつでも退会できます。</p>
-    </div>
+<!-- 9. LINE登録CTA -->
+<section class="line-cta-final" id="cta">
+  <div class="pre-cta-image">
+    <img src="present.png" alt="LINE登録プレゼント">
   </div>
-</section>
-
-<!-- CTA前 画像 -->
-<!-- present画像②（最下部CTA上部） -->
-<div class="pre-cta-image">
-  <img src="present.png" alt="LINE登録プレゼント">
-</div>
-
-<!-- 10. CTA -->
-<section class="cta" id="cta">
-  <div class="container">
-    <div class="cta__inner">
-      <span class="section-label">GET STARTED</span>
-      <h2 class="cta__title">まずはLINEで登録しよう</h2>
-      <p class="cta__sub">
-        コース情報・無料説明会の日程・受講生の声を<br>
-        LINEでいち早くお届けします。登録は無料です。
-      </p>
-      <div class="cta__buttons">
+  <div class="line-cta-final__body">
+    <div class="container">
+      <div class="line-cta-final__inner fade-up">
+        <span class="section-label">GET STARTED</span>
+        <h2 class="line-cta-final__title">まずはLINEで登録しよう</h2>
+        <p class="line-cta-final__sub">
+          コース情報・無料説明会の日程・プレゼントを<br>
+          LINEでいち早くお届けします。登録は無料です。
+        </p>
         <a href="#" class="btn btn--primary btn--lg btn--shine">LINEで無料登録する</a>
-        <a href="#" class="btn btn--outline">無料説明会に参加する</a>
-        <a href="#courses" class="cta__text-link">コース一覧を見る</a>
+        <p class="line-cta-final__note">※ 参加後の勧誘はありません。登録無料、いつでも解除できます。</p>
       </div>
-      <p class="cta__note">※ 参加後の勧誘はありません。疑問・質問は何でもどうぞ。</p>
     </div>
   </div>
 </section>
