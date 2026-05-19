@@ -532,7 +532,7 @@
     }
 
     /* ============================
-       5. AIで叶う未来（3カラムグリッド）
+       5. AIで叶う未来（座布団カード）
     ============================ */
     .future { background-color: var(--bg-alt); }
     .future__grid {
@@ -540,33 +540,68 @@
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
+      padding-top: 28px; /* バッジの飛び出し分 */
     }
     .future-card {
       flex: 0 0 calc(33.333% - 14px);
       min-width: 260px;
       background: var(--white);
       border-radius: var(--radius);
-      padding: 32px 24px 28px;
-      box-shadow: var(--shadow);
+      overflow: visible;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      position: relative;
+    }
+    /* 丸バッジ（カード上部に飛び出す） */
+    .future-card__badge {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--accent);
+      border: 2.5px solid var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    /* 座布団（色付きヘッダー） */
+    .future-card__header {
+      background-color: var(--accent);
+      border-radius: var(--radius) var(--radius) 0 0;
+      padding: 24px 20px 20px;
+      text-align: center;
+    }
+    .future-card__title {
+      color: var(--white);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    /* アイコン＋説明文エリア */
+    .future-card__body {
+      padding: 24px 20px 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      flex: 1;
     }
     .future-card__icon {
-      width: 72px; height: 72px;
-      margin-bottom: 18px;
+      width: 80px; height: 80px;
+      margin-bottom: 14px;
     }
     .future-card__icon img { width: 100%; height: auto; display: block; }
-    .future-card__num {
-      font-size: 11px; font-weight: 800; letter-spacing: 0.15em;
-      color: var(--accent); display: block; margin-bottom: 8px;
-    }
-    .future-card__title {
-      font-size: 18px; font-weight: 700;
-      color: var(--text); margin-bottom: 10px; line-height: 1.5;
-    }
-    .future-card__desc { font-size: 14px; color: var(--text-sub); line-height: 1.75; }
+    .future-card__desc { font-size: 14px; color: var(--text-sub); line-height: 1.8; }
     @media (max-width: 768px) {
       .future-card { flex: 0 0 calc(50% - 10px); }
     }
@@ -1350,38 +1385,58 @@
     <div class="future__grid">
 
       <div class="future-card fade-up">
-        <div class="future-card__icon"><img src="アイコン/1_aikon.png" alt=""></div>
-        <span class="future-card__num">01</span>
-        <h3 class="future-card__title">仕事がラクになる</h3>
-        <p class="future-card__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
+        <div class="future-card__badge">01</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">仕事がラクになる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/1_aikon.png" alt="仕事がラクになる"></div>
+          <p class="future-card__desc">毎日の繰り返し作業をAIに任せて、時間を取り戻す。週3時間の節約から始められます。</p>
+        </div>
       </div>
 
       <div class="future-card fade-up delay-1">
-        <div class="future-card__icon"><img src="アイコン/2_aikon.png" alt=""></div>
-        <span class="future-card__num">02</span>
-        <h3 class="future-card__title">好きなことに集中できる</h3>
-        <p class="future-card__desc">雑務から解放されて、クリエイティブな仕事・企画に集中できる環境を作る。</p>
+        <div class="future-card__badge">02</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">好きなことに集中できる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/2_aikon.png" alt="好きなことに集中できる"></div>
+          <p class="future-card__desc">雑務から解放されて、クリエイティブな仕事・企画に集中できる環境を作る。</p>
+        </div>
       </div>
 
       <div class="future-card fade-up delay-2">
-        <div class="future-card__icon"><img src="アイコン/3_aikon.png" alt=""></div>
-        <span class="future-card__num">03</span>
-        <h3 class="future-card__title">自分の事業を伸ばせる</h3>
-        <p class="future-card__desc">LP・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
+        <div class="future-card__badge">03</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">自分の事業を伸ばせる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/3_aikon.png" alt="自分の事業を伸ばせる"></div>
+          <p class="future-card__desc">LP・SNS投稿・LINE配信をAIで効率化。一人でも回る仕組みが手に入る。</p>
+        </div>
       </div>
 
       <div class="future-card fade-up delay-1">
-        <div class="future-card__icon"><img src="アイコン/4_aikon.png" alt=""></div>
-        <span class="future-card__num">04</span>
-        <h3 class="future-card__title">クライアントワークの幅が広がる</h3>
-        <p class="future-card__desc">AI活用スキルをサービスに加えることで、単価アップと差別化を同時に実現できる。</p>
+        <div class="future-card__badge">04</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">クライアントワークの幅が広がる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/4_aikon.png" alt="クライアントワークの幅が広がる"></div>
+          <p class="future-card__desc">AI活用スキルをサービスに加えて、単価アップと差別化を同時に実現できる。</p>
+        </div>
       </div>
 
       <div class="future-card fade-up delay-2">
-        <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt=""></div>
-        <span class="future-card__num">05</span>
-        <h3 class="future-card__title">新しい収入源を作れる</h3>
-        <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
+        <div class="future-card__badge">05</div>
+        <div class="future-card__header">
+          <h3 class="future-card__title">新しい収入源を作れる</h3>
+        </div>
+        <div class="future-card__body">
+          <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt="新しい収入源を作れる"></div>
+          <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
+        </div>
       </div>
 
     </div>
