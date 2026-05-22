@@ -1389,6 +1389,135 @@
     }
 
     /* ============================
+       FEATURES（AIラボの特徴）
+    ============================ */
+    .features {
+      background: #fdf5f5;
+      padding: 88px 0 96px;
+    }
+    .features__header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .features__lead-box {
+      display: inline-block;
+      border: 1.5px solid #e0d0d0;
+      border-radius: 6px;
+      padding: 18px 40px;
+      margin-top: 20px;
+      background: #fff;
+      font-size: clamp(15px, 2.5vw, 19px);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .features__lead-box em {
+      background: #d98a96;
+      color: #fff;
+      font-style: normal;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 4px;
+    }
+    .features__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 40px;
+      position: relative;
+    }
+    @media (max-width: 900px) {
+      .features__steps {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2px;
+      }
+    }
+    @media (max-width: 540px) {
+      .features__steps {
+        grid-template-columns: 1fr;
+        gap: 2px;
+      }
+    }
+    .features__step {
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .features__step + .features__step::before {
+      content: '';
+      position: absolute;
+      left: -1px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #f0e8e8;
+    }
+    @media (max-width: 900px) {
+      .features__step + .features__step::before { display: none; }
+    }
+    .features__step-head {
+      padding: 20px 24px 18px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 50%, calc(100% - 16px) 100%, 0 100%);
+    }
+    .features__step:last-child .features__step-head {
+      clip-path: none;
+    }
+    @media (max-width: 900px) {
+      .features__step-head { clip-path: none; }
+    }
+    .features__step-head--1 { background: #5abfbf; }
+    .features__step-head--2 { background: #9b7ec8; }
+    .features__step-head--3 { background: #e8829a; }
+    .features__step-head--4 { background: #c9a96e; }
+    .features__step-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      opacity: 0.9;
+      line-height: 1.2;
+    }
+    .features__step-num span {
+      display: block;
+      font-size: 24px;
+      letter-spacing: 0;
+      line-height: 1;
+      margin-top: 2px;
+    }
+    .features__step-title {
+      font-size: clamp(14px, 1.8vw, 16px);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .features__step-body {
+      padding: 28px 24px 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .features__step-icon {
+      width: 64px;
+      height: 64px;
+    }
+    .features__step-desc {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .features__step-desc strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #333;
+    }
+
+    /* ============================
        GALLERY（成果物ギャラリー）
     ============================ */
     .gallery { background: #f4f0ec; padding: 100px 0; }
@@ -1915,6 +2044,105 @@
           <p class="for-you__card-check">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#d98a96"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             <span><strong>AI時代に取り残されず</strong><br>自分らしく稼ぎ続けたい方</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3d. AIラボの特徴（選ばれる理由） -->
+<section class="features" id="features">
+  <div class="container">
+
+    <div class="features__header fade-up">
+      <span class="section-label">WHY AI LABO</span>
+      <h2>AIラボが選ばれる理由</h2>
+      <p class="features__lead-box">
+        <em>現場で稼ぐ女性が直接教えるから</em>即ビジネスに使える
+      </p>
+    </div>
+
+    <div class="features__steps">
+
+      <!-- STEP 1 -->
+      <div class="features__step fade-up">
+        <div class="features__step-head features__step-head--1">
+          <div class="features__step-num">STEP <span>1</span></div>
+          <p class="features__step-title">ALC卒業生が<br>直接教える</p>
+        </div>
+        <div class="features__step-body">
+          <svg class="features__step-icon" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="22" r="13" fill="#e8f7f7" stroke="#5abfbf" stroke-width="2"/>
+            <path d="M16 50c0-8.8 7.2-16 16-16s16 7.2 16 16" stroke="#5abfbf" stroke-width="2" stroke-linecap="round"/>
+            <path d="M40 28l4 4-4 4" stroke="#5abfbf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="features__step-desc">
+            <strong>リアルな学習体験を持つ講師</strong>
+            AIリーダーキャンプ（ALC）で実際に学んだメンバーが担当。つまずきポイントや乗り越え方を知っているから、サポートが的確です。
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="features__step fade-up">
+        <div class="features__step-head features__step-head--2">
+          <div class="features__step-num">STEP <span>2</span></div>
+          <p class="features__step-title">現場のリアルな<br>活用事例が学べる</p>
+        </div>
+        <div class="features__step-body">
+          <svg class="features__step-icon" viewBox="0 0 64 64" fill="none">
+            <rect x="10" y="14" width="44" height="30" rx="4" fill="#f0ecf8" stroke="#9b7ec8" stroke-width="2"/>
+            <path d="M22 44v6M42 44v6M18 50h28" stroke="#9b7ec8" stroke-width="2" stroke-linecap="round"/>
+            <path d="M24 29l4 4 12-10" stroke="#9b7ec8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <p class="features__step-desc">
+            <strong>見るだけで終わらない実践学習</strong>
+            動画を見て「なるほど」で止まらない。今まさにAIを使って仕事をしているメンバーのモデルケースが、そのまま学べます。
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="features__step fade-up">
+        <div class="features__step-head features__step-head--3">
+          <div class="features__step-num">STEP <span>3</span></div>
+          <p class="features__step-title">同じ立場の女性<br>起業家が教える</p>
+        </div>
+        <div class="features__step-body">
+          <svg class="features__step-icon" viewBox="0 0 64 64" fill="none">
+            <circle cx="24" cy="22" r="10" fill="#fdeef2" stroke="#e8829a" stroke-width="2"/>
+            <circle cx="42" cy="26" r="8" fill="#fdeef2" stroke="#e8829a" stroke-width="2"/>
+            <path d="M10 50c0-7.7 6.3-14 14-14s14 6.3 14 14" stroke="#e8829a" stroke-width="2" stroke-linecap="round"/>
+            <path d="M42 34c4.4 0 8 3.6 8 8" stroke="#e8829a" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>
+          </svg>
+          <p class="features__step-desc">
+            <strong>自分事として響くコンテンツ</strong>
+            子育て・家事・仕事を両立しながら結果を出している女性一人起業家たち。同じ立場だからこそ刺さる、リアルで役立つ内容が揃っています。
+          </p>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="features__step fade-up">
+        <div class="features__step-head features__step-head--4">
+          <div class="features__step-num">STEP <span>4</span></div>
+          <p class="features__step-title">すでに売上が<br>立っている実績</p>
+        </div>
+        <div class="features__step-body">
+          <svg class="features__step-icon" viewBox="0 0 64 64" fill="none">
+            <path d="M12 44l12-14 10 8 10-16 8 10" stroke="#c9a96e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="12" cy="44" r="3" fill="#c9a96e"/>
+            <circle cx="24" cy="30" r="3" fill="#c9a96e"/>
+            <circle cx="34" cy="38" r="3" fill="#c9a96e"/>
+            <circle cx="44" cy="22" r="3" fill="#c9a96e"/>
+            <circle cx="52" cy="32" r="3" fill="#c9a96e"/>
+            <rect x="8" y="8" width="48" height="48" rx="4" stroke="#f0e8d8" stroke-width="1.5"/>
+          </svg>
+          <p class="features__step-desc">
+            <strong>理論じゃなく、証明された実績</strong>
+            講師・受講生ともにAIを活用して実際に売上を上げています。「なんとなく学ぶ」ではなく、ビジネスに直結する学びを届けます。
           </p>
         </div>
       </div>
