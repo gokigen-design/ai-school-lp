@@ -1319,6 +1319,76 @@
     }
 
     /* ============================
+       FOR YOU（こんな方におすすめ）
+    ============================ */
+    .for-you {
+      background: #fff;
+      padding: 80px 0;
+    }
+    .for-you__heading-wrap {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+    .for-you__heading {
+      display: inline-block;
+      background: #d98a96;
+      color: #fff;
+      font-size: clamp(20px, 3.5vw, 28px);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 16px 48px;
+      border-radius: 4px;
+    }
+    .for-you__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 768px) {
+      .for-you__grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+    }
+    .for-you__card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    }
+    .for-you__card-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+    }
+    .for-you__card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .for-you__card-body {
+      padding: 16px 18px 20px;
+      background: #fdf8f8;
+    }
+    .for-you__card-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .for-you__card-check svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .for-you__card-check strong {
+      color: #d98a96;
+    }
+
+    /* ============================
        GALLERY（成果物ギャラリー）
     ============================ */
     .gallery { background: #f4f0ec; padding: 100px 0; }
@@ -1786,6 +1856,66 @@
         <div class="future-card__body">
           <div class="future-card__icon"><img src="アイコン/5_aikon.png" alt="新しい収入源を作れる"></div>
           <p class="future-card__desc">AIを教える・使って制作する新しい切り口で、収入の柱を増やせる。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3c. AIラボで叶うこと（こんな方におすすめ） -->
+<section class="for-you" id="for-you">
+  <div class="container">
+    <div class="for-you__heading-wrap fade-up">
+      <p class="for-you__heading">AIラボはこんな方におすすめ</p>
+    </div>
+    <div class="for-you__grid">
+
+      <div class="for-you__card fade-up">
+        <div class="for-you__card-photo">
+          <img src="女子/jyosi_1.png" alt="">
+        </div>
+        <div class="for-you__card-body">
+          <p class="for-you__card-check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#d98a96"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>AIを使いこなして</strong><br>ビジネスをもっと加速させたい方</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="for-you__card fade-up">
+        <div class="for-you__card-photo">
+          <img src="女子/jyosi_2.png" alt="">
+        </div>
+        <div class="for-you__card-body">
+          <p class="for-you__card-check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#d98a96"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>作業時間を短縮して</strong><br>自分の時間をもっと増やしたい方</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="for-you__card fade-up">
+        <div class="for-you__card-photo">
+          <img src="女子/jyosi_3.png" alt="">
+        </div>
+        <div class="for-you__card-body">
+          <p class="for-you__card-check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#d98a96"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>発信・デザイン・仕組み化</strong><br>何から始めるべきか迷っている方</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="for-you__card fade-up">
+        <div class="for-you__card-photo">
+          <img src="女子/jyosi_4.png" alt="">
+        </div>
+        <div class="for-you__card-body">
+          <p class="for-you__card-check">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="4" fill="#d98a96"/><path d="M5 10.5l3.5 3.5 6.5-7" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span><strong>AI時代に取り残されず</strong><br>自分らしく稼ぎ続けたい方</span>
+          </p>
         </div>
       </div>
 
