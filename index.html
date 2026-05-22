@@ -838,6 +838,69 @@
       color: #fff;
     }
 
+    /* FIRST STEP バナー */
+    .courses__first-step {
+      background: linear-gradient(135deg, #5abfbf, #3fa5a5);
+      border-radius: 12px;
+      padding: 32px 40px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 8px 32px rgba(90,191,191,0.25);
+    }
+    .courses__first-step-badge {
+      background: #fff;
+      color: #3fa5a5;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 100px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .courses__first-step-body { flex: 1; }
+    .courses__first-step-body h3 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+    .courses__first-step-body p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .courses__first-step-link {
+      display: inline-block;
+      background: #fff;
+      color: #3fa5a5;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .courses__first-step-link:hover {
+      background: #e8f7f7;
+      transform: translateY(-2px);
+    }
+    @media (max-width: 640px) {
+      .courses__first-step {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 24px;
+        gap: 16px;
+      }
+    }
+
     /* コースセクションLINE誘導 */
     .courses__line-cta {
       margin-top: 52px;
@@ -2630,6 +2693,16 @@
     <!-- コース全体一覧画像 -->
     <div class="courses__overview fade-up">
       <img src="ko-suitirann.png" alt="AI LABOコース一覧">
+    </div>
+
+    <!-- FIRST STEP バナー -->
+    <div class="courses__first-step fade-up">
+      <span class="courses__first-step-badge">First Step</span>
+      <div class="courses__first-step-body">
+        <h3>CC感動体験 — Claude Code 導入</h3>
+        <p>AIラボを始めるなら、まずここから。Claude Codeの初期設定から感動体験まで、最初の一歩をサポートします。</p>
+      </div>
+      <a href="https://alc-front-courses.vercel.app/course-cc-experience.html" target="_blank" class="courses__first-step-link">詳細を見る</a>
     </div>
 
     <!-- 4つのコースカテゴリーカード -->
