@@ -1530,71 +1530,79 @@
       padding: 72px 0 56px;
     }
     .benefits__block {
-      padding: 72px 0 80px;
+      padding: 56px 0 64px;
     }
     .benefits__block--pink { background: #fce9ed; }
     .benefits__block--teal { background: #dff5f4; }
 
-    .benefits__block-header {
-      text-align: center;
-      margin-bottom: 52px;
+    /* 白いカード（色背景の上に乗る） */
+    .benefits__white-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.09);
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      overflow: hidden;
+      min-height: 420px;
     }
+    @media (max-width: 900px) {
+      .benefits__white-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* カード左：テキストエリア */
+    .benefits__card-left {
+      padding: 52px 48px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .benefits__card-left { padding: 36px 28px; }
+    }
+
     .benefits__eyebrow {
       display: block;
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.18em;
-      margin-bottom: 14px;
     }
     .benefits__block--pink .benefits__eyebrow { color: #c5607e; }
     .benefits__block--teal .benefits__eyebrow { color: #3ea8a8; }
 
     .benefits__seatpad {
       display: inline-block;
-      padding: 14px 48px;
+      padding: 12px 36px;
       border-radius: 4px;
-      font-size: clamp(18px, 2.8vw, 24px);
+      font-size: clamp(17px, 2.4vw, 22px);
       font-weight: 700;
       color: #fff;
       letter-spacing: 0.06em;
+      width: fit-content;
     }
     .benefits__block--pink .benefits__seatpad { background: #e8829a; }
     .benefits__block--teal .benefits__seatpad { background: #5abfbf; }
 
-    .benefits__block-content {
-      display: grid;
-      grid-template-columns: 1fr 260px;
-      gap: 56px;
-      align-items: center;
-    }
-    @media (max-width: 900px) {
-      .benefits__block-content { grid-template-columns: 1fr; gap: 36px; }
-    }
-
     .benefits__items {
       display: flex;
       flex-direction: column;
-      gap: 28px;
+      gap: 22px;
     }
     .benefits__item {
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 14px;
     }
-    .benefits__item-icon {
-      flex-shrink: 0;
-      margin-top: 4px;
-    }
-    .benefits__item-body {}
+    .benefits__item-icon { flex-shrink: 0; margin-top: 3px; }
     .benefits__item-title {
-      font-size: clamp(18px, 2.4vw, 22px);
+      font-size: clamp(16px, 2vw, 19px);
       font-weight: 700;
       line-height: 1.4;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+      color: #333;
     }
-    .benefits__block--pink .benefits__item-title { color: #333; }
-    .benefits__block--teal .benefits__item-title { color: #1a4a4a; }
-
     .benefits__item-desc {
       font-size: 13px;
       line-height: 1.75;
@@ -1602,31 +1610,25 @@
     .benefits__block--pink .benefits__item-desc { color: #7a4050; }
     .benefits__block--teal .benefits__item-desc { color: #2a6868; }
 
-    .benefits__photos {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: center;
-    }
-    @media (max-width: 900px) {
-      .benefits__photos { flex-direction: row; justify-content: center; }
-    }
-    .benefits__photo {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
+    /* カード右：四角い画像エリア */
+    .benefits__card-right {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
       overflow: hidden;
-      flex-shrink: 0;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.14);
     }
-    .benefits__photo img {
+    .benefits__card-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center top;
+      display: block;
     }
-    @media (max-width: 540px) {
-      .benefits__photo { width: 110px; height: 110px; }
+    @media (max-width: 900px) {
+      .benefits__card-right {
+        grid-template-rows: none;
+        grid-template-columns: 1fr 1fr;
+        height: 220px;
+      }
     }
 
     /* ============================
@@ -2275,94 +2277,94 @@
   </div>
 
   <!-- POINT-1: 事業主向け（ピンク） -->
-  <div class="benefits__block benefits__block--pink fade-up">
+  <div class="benefits__block benefits__block--pink">
     <div class="container">
-      <div class="benefits__block-header">
-        <span class="benefits__eyebrow">POINT-1</span>
-        <p class="benefits__seatpad">自分の事業をお持ちの方</p>
-      </div>
-      <div class="benefits__block-content">
-        <div class="benefits__items">
+      <div class="benefits__white-card fade-up">
+        <div class="benefits__card-left">
+          <span class="benefits__eyebrow">POINT-1</span>
+          <p class="benefits__seatpad">自分の事業をお持ちの方</p>
+          <div class="benefits__items">
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#e8829a"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">やりたくない作業はAIに丸投げ</p>
-              <p class="benefits__item-desc">あなたは自分にしかできないことに集中できる</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#e8829a"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">やりたくない作業はAIに丸投げ</p>
+                <p class="benefits__item-desc">あなたは自分にしかできないことに集中できる</p>
+              </div>
             </div>
-          </div>
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#e8829a"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">サポートの質・スピードが上がる</p>
-              <p class="benefits__item-desc">よりクオリティの高いものがスピーディーに自力で出力できるようになり、お客様に喜ばれる</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#e8829a"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">サポートの質・スピードが上がる</p>
+                <p class="benefits__item-desc">よりクオリティの高いものがスピーディーに自力で出力できるようになり、お客様に喜ばれる</p>
+              </div>
             </div>
-          </div>
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#e8829a"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">外注費・ツール使用費が削減できる</p>
-              <p class="benefits__item-desc">今まで自分では無理だと思って外注していた金額が、自分一人でできるようになるため浮く</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#e8829a"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">外注費・ツール使用費が削減できる</p>
+                <p class="benefits__item-desc">今まで自分では無理だと思って外注していた金額が、自分一人でできるようになるため浮く</p>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
-        <div class="benefits__photos">
-          <div class="benefits__photo"><img src="女子/jyosi_1.png" alt=""></div>
-          <div class="benefits__photo"><img src="女子/jyosi_2.png" alt=""></div>
+        <div class="benefits__card-right">
+          <img src="女子/jyosi_1.png" alt="">
+          <img src="女子/jyosi_2.png" alt="">
         </div>
       </div>
     </div>
   </div>
 
   <!-- POINT-2: サポーター向け（ミント） -->
-  <div class="benefits__block benefits__block--teal fade-up">
+  <div class="benefits__block benefits__block--teal">
     <div class="container">
-      <div class="benefits__block-header">
-        <span class="benefits__eyebrow">POINT-2</span>
-        <p class="benefits__seatpad">誰かをサポートしたい方</p>
-      </div>
-      <div class="benefits__block-content">
-        <div class="benefits__items">
+      <div class="benefits__white-card fade-up">
+        <div class="benefits__card-left">
+          <span class="benefits__eyebrow">POINT-2</span>
+          <p class="benefits__seatpad">誰かをサポートしたい方</p>
+          <div class="benefits__items">
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#5abfbf"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">クライアントワークの幅が広がる</p>
-              <p class="benefits__item-desc">今まで断っていた案件にも対応できるようになり、仕事の選択肢がぐっと増える</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#5abfbf"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">クライアントワークの幅が広がる</p>
+                <p class="benefits__item-desc">今まで断っていた案件にも対応できるようになり、仕事の選択肢がぐっと増える</p>
+              </div>
             </div>
-          </div>
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#5abfbf"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">新しい収入源・単価アップが実現できる</p>
-              <p class="benefits__item-desc">AIスキルを武器にした新メニューで、より高い単価のサービスを打ち出せる</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#5abfbf"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">新しい収入源・単価アップが実現できる</p>
+                <p class="benefits__item-desc">AIスキルを武器にした新メニューで、より高い単価のサービスを打ち出せる</p>
+              </div>
             </div>
-          </div>
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#5abfbf"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">納品クオリティが上がり売上も上がる</p>
-              <p class="benefits__item-desc">AIを活用した高品質なアウトプットで、リピートや口コミが生まれる</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#5abfbf"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">納品クオリティが上がり売上も上がる</p>
+                <p class="benefits__item-desc">AIを活用した高品質なアウトプットで、リピートや口コミが生まれる</p>
+              </div>
             </div>
-          </div>
 
-          <div class="benefits__item">
-            <svg class="benefits__item-icon" width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#5abfbf"/><path d="M8 14.5l4.5 4.5 8-8" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <div class="benefits__item-body">
-              <p class="benefits__item-title">時短で好きなことに挑戦できる</p>
-              <p class="benefits__item-desc">収入はそのままに自分の時間が増えて、生活の自由度が上がる</p>
+            <div class="benefits__item">
+              <svg class="benefits__item-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="13" fill="#5abfbf"/><path d="M7.5 13.5l4 4 7-7" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <div>
+                <p class="benefits__item-title">時短で好きなことに挑戦できる</p>
+                <p class="benefits__item-desc">収入はそのままに自分の時間が増えて、生活の自由度が上がる</p>
+              </div>
             </div>
-          </div>
 
+          </div>
         </div>
-        <div class="benefits__photos">
-          <div class="benefits__photo"><img src="女子/jyosi_3.png" alt=""></div>
-          <div class="benefits__photo"><img src="女子/jyosi_4.png" alt=""></div>
+        <div class="benefits__card-right">
+          <img src="女子/jyosi_3.png" alt="">
+          <img src="女子/jyosi_4.png" alt="">
         </div>
       </div>
     </div>
