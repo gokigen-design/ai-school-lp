@@ -1518,6 +1518,142 @@
     }
 
     /* ============================
+       BENEFITS（AIで叶う未来）
+    ============================ */
+    .benefits {
+      background: #f9f4f4;
+      padding: 88px 0 96px;
+    }
+    .benefits__cards {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .benefits__card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 28px rgba(0,0,0,0.06);
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      min-height: 340px;
+    }
+    @media (max-width: 900px) {
+      .benefits__card {
+        grid-template-columns: 1fr;
+      }
+    }
+    .benefits__card-left {
+      padding: 48px 52px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .benefits__card-left { padding: 36px 28px; }
+    }
+    .benefits__point {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+    .benefits__card--pink .benefits__point { color: #d98a96; }
+    .benefits__card--teal .benefits__point { color: #5abfbf; }
+    .benefits__tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 4px;
+      padding: 4px 14px;
+      width: fit-content;
+    }
+    .benefits__card--pink .benefits__tag {
+      background: #fdeef2;
+      color: #d98a96;
+    }
+    .benefits__card--teal .benefits__tag {
+      background: #e8f7f7;
+      color: #5abfbf;
+    }
+    .benefits__card-title {
+      font-size: clamp(20px, 2.8vw, 26px);
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .benefits__card--pink .benefits__card-title em {
+      color: #d98a96;
+      font-style: normal;
+    }
+    .benefits__card--teal .benefits__card-title em {
+      color: #5abfbf;
+      font-style: normal;
+    }
+    .benefits__card-lead {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.75;
+      margin-top: -4px;
+    }
+    .benefits__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+    .benefits__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.6;
+    }
+    .benefits__list li svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+    .benefits__card-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 36px 28px;
+    }
+    .benefits__card--pink .benefits__card-right {
+      background: #fdeef2;
+    }
+    .benefits__card--teal .benefits__card-right {
+      background: #e8f7f7;
+    }
+    @media (max-width: 900px) {
+      .benefits__card-right {
+        padding: 28px 24px 36px;
+        background: none !important;
+        border-top: 1px solid #f0e8e8;
+      }
+    }
+    .benefits__photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .benefits__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    @media (max-width: 540px) {
+      .benefits__photo { width: 96px; height: 96px; }
+    }
+
+    /* ============================
        GALLERY（成果物ギャラリー）
     ============================ */
     .gallery { background: #f4f0ec; padding: 100px 0; }
@@ -2144,6 +2280,101 @@
             <strong>理論じゃなく、証明された実績</strong>
             講師・受講生ともにAIを活用して実際に売上を上げています。「なんとなく学ぶ」ではなく、ビジネスに直結する学びを届けます。
           </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 3e. AIで叶う未来（BENEFITS） -->
+<section class="benefits" id="benefits">
+  <div class="container">
+
+    <div class="section-header section-header--center fade-up">
+      <span class="section-label">BENEFITS</span>
+      <h2>AIラボで学ぶと、こんな未来が叶う</h2>
+    </div>
+
+    <div class="benefits__cards">
+
+      <!-- POINT-1: 事業主向け（ピンク） -->
+      <div class="benefits__card benefits__card--pink fade-up">
+        <div class="benefits__card-left">
+          <span class="benefits__point">POINT-1</span>
+          <span class="benefits__tag">自分の事業をお持ちの方</span>
+          <h3 class="benefits__card-title">
+            AIが<em>あなたの右腕</em>になる。<br>本来の強みに集中できる。
+          </h3>
+          <p class="benefits__card-lead">
+            時間・コスト・クオリティの悩みをAIが解決。やりたいことに全力を注げるようになります。
+          </p>
+          <ul class="benefits__list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#d98a96"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              自分にしかできないことに集中できる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#d98a96"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              サポートの質・スピードが上がる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#d98a96"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              外注費・ツール費用が削減できる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#d98a96"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              スピード感が出て、そのまま売上が上がる
+            </li>
+          </ul>
+        </div>
+        <div class="benefits__card-right">
+          <div class="benefits__photo">
+            <img src="女子/jyosi_1.png" alt="">
+          </div>
+          <div class="benefits__photo">
+            <img src="女子/jyosi_2.png" alt="">
+          </div>
+        </div>
+      </div>
+
+      <!-- POINT-2: サポーター向け（ミント） -->
+      <div class="benefits__card benefits__card--teal fade-up">
+        <div class="benefits__card-left">
+          <span class="benefits__point">POINT-2</span>
+          <span class="benefits__tag">誰かをサポートしたい方</span>
+          <h3 class="benefits__card-title">
+            <em>収入の柱が増えて</em>、<br>自分の時間も取り戻せる。
+          </h3>
+          <p class="benefits__card-lead">
+            AIスキルが加わることで、サービスの価値がぐっと高まります。収入はそのまま、時間と自由が手に入ります。
+          </p>
+          <ul class="benefits__list">
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#5abfbf"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              クライアントワークの幅が広がる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#5abfbf"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              新しい収入源・単価アップが実現できる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#5abfbf"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              納品クオリティが上がり売上も上がる
+            </li>
+            <li>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect width="20" height="20" rx="10" fill="#5abfbf"/><path d="M5.5 10.5l3 3 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              時短で好きなことに挑戦できる。収入そのままに自分の時間が増える
+            </li>
+          </ul>
+        </div>
+        <div class="benefits__card-right">
+          <div class="benefits__photo">
+            <img src="女子/jyosi_3.png" alt="">
+          </div>
+          <div class="benefits__photo">
+            <img src="女子/jyosi_4.png" alt="">
+          </div>
         </div>
       </div>
 
