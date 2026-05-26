@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI LABO LP 制作の記録 — 指示→変化の流れ</title>
+<style>
+  :root {
+    --teal: #5abfbf;
+    --teal-light: #e8f7f7;
+    --pink: #e8829a;
+    --pink-light: #fdeef2;
+    --orange: #f5873a;
+    --green: #4caf78;
+    --blue: #4a90d9;
+    --text: #333;
+    --sub: #777;
+    --bg: #faf9f7;
+    --white: #fff;
+    --radius: 10px;
+    --shadow: 0 4px 20px rgba(0,0,0,0.07);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+  a { color: var(--teal); text-decoration: none; }
+
+  /* HEADER */
+  .page-header {
+    background: linear-gradient(135deg, #3aacac, #5abfbf);
+    color: #fff;
+    padding: 56px 24px 48px;
+    text-align: center;
+  }
+  .page-header__label {
+    font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+    background: rgba(255,255,255,0.2); padding: 4px 14px; border-radius: 100px;
+    display: inline-block; margin-bottom: 16px;
+  }
+  .page-header h1 { font-size: clamp(22px, 5vw, 34px); font-weight: 700; margin-bottom: 12px; }
+  .page-header p { font-size: 15px; color: rgba(255,255,255,0.85); max-width: 560px; margin: 0 auto; }
+
+  /* INTRO BOX */
+  .intro-box {
+    max-width: 860px; margin: 40px auto; padding: 0 24px;
+  }
+  .intro-card {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 28px 32px;
+    border-left: 4px solid var(--teal);
+  }
+  .intro-card h2 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--teal); }
+  .intro-card p { font-size: 14px; color: var(--sub); line-height: 1.8; }
+
+  /* TIMELINE */
+  .timeline { max-width: 860px; margin: 0 auto 80px; padding: 0 24px; }
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 0 20px;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .step__num-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .step__num {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--teal);
+    color: #fff;
+    font-weight: 700; font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(90,191,191,0.35);
+    position: relative; z-index: 1;
+  }
+  .step__line {
+    width: 2px; background: #d8efef; flex: 1; min-height: 20px; margin-top: 0;
+  }
+  .step:last-child .step__line { display: none; }
+  .step__card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px 20px;
+    margin-bottom: 8px;
+  }
+  .step__label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--teal); background: var(--teal-light);
+    padding: 2px 10px; border-radius: 100px; display: inline-block; margin-bottom: 10px;
+  }
+  .step__title {
+    font-size: 16px; font-weight: 700; line-height: 1.4; margin-bottom: 10px;
+  }
+  .prompt-box {
+    background: #f5f5f5;
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #444;
+    line-height: 1.75;
+    border-left: 3px solid #ccc;
+    position: relative;
+  }
+  .prompt-box::before {
+    content: '指示文';
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: #999; display: block; margin-bottom: 4px;
+  }
+  .result-box {
+    background: var(--teal-light);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #2a6868;
+    line-height: 1.75;
+    border-left: 3px solid var(--teal);
+    position: relative;
+  }
+  .result-box::before {
+    content: '変化・追加内容';
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: var(--teal); display: block; margin-bottom: 4px;
+  }
+  .step__link {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 12px; font-weight: 700;
+    background: var(--teal); color: #fff;
+    padding: 4px 14px; border-radius: 100px;
+  }
+  /* color variants */
+  .step--pink .step__num { background: var(--pink); box-shadow: 0 2px 10px rgba(232,130,154,0.35); }
+  .step--pink .step__label { color: var(--pink); background: var(--pink-light); }
+  .step--pink .result-box { background: var(--pink-light); color: #7a3050; border-left-color: var(--pink); }
+  .step--pink .result-box::before { color: var(--pink); }
+  .step--pink .step__link { background: var(--pink); }
+
+  .step--orange .step__num { background: var(--orange); box-shadow: 0 2px 10px rgba(245,135,58,0.3); }
+  .step--orange .step__label { color: var(--orange); background: #fff3ea; }
+  .step--orange .result-box { background: #fff3ea; color: #7a3a00; border-left-color: var(--orange); }
+  .step--orange .result-box::before { color: var(--orange); }
+
+  /* COLOR CHIPS */
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 4px 12px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; color: #fff;
+  }
+
+  /* SUMMARY TABLE */
+  .summary { max-width: 860px; margin: 0 auto 80px; padding: 0 24px; }
+  .summary h2 { font-size: 20px; font-weight: 700; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  th { background: var(--teal); color: #fff; font-size: 13px; padding: 12px 16px; text-align: left; }
+  td { font-size: 13px; padding: 12px 16px; border-bottom: 1px solid #eee; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td:first-child { font-weight: 700; white-space: nowrap; }
+
+  /* FOOTER */
+  .footer { background: #333; color: rgba(255,255,255,0.7); text-align: center; padding: 28px; font-size: 13px; }
+  .footer strong { color: #fff; }
+
+  @media (max-width: 600px) {
+    .step { grid-template-columns: 40px 1fr; gap: 0 12px; }
+    .step__num { width: 36px; height: 36px; font-size: 12px; }
+    .step__card { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="page-header__label">Case Study</span>
+  <h1>AI LABO LP 制作の記録</h1>
+  <p>「こんなページを作って」という指示から始まり、<br>どのように進化していったか——制作の全工程をまとめました。</p>
+</div>
+
+<div class="intro-box">
+  <div class="intro-card">
+    <h2>このドキュメントについて</h2>
+    <p>AI（Claude Code）へのテキスト指示だけで、ゼロからLPを制作・更新した記録です。<br>
+    「指示文」と「その結果どう変わったか」をセットで掲載しています。<br>
+    デザインの知識やコーディングスキルは不要。日本語の文章を送るだけで実装が進みます。</p>
+  </div>
+</div>
+
+<div class="timeline">
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">1</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Base</span>
+      <p class="step__title">ベースLPの生成</p>
+      <div class="prompt-box">女性起業家向けのAIスクール「AI LABO」のランディングページを作ってください。ターゲットは30〜40代の女性起業家。AIを使って仕事をラクにしたい・収入を上げたい層向け。</div>
+      <div class="result-box">ナビゲーション・ヒーロー・コース一覧・FAQ・CTA（LINE登録）を含むLPの骨格が生成。カラーはティール（#5abfbf）をメインに、清潔感のある女性向けデザイン。</div>
+      <a href="https://gokigen-design.github.io/ai-school-lp/" target="_blank" class="step__link">完成ページを見る</a>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">2</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Section</span>
+      <p class="step__title">「こんな方におすすめ」セクション追加</p>
+      <div class="prompt-box">SHElikesのような「こんな方におすすめ」セクションを追加してください。4カラムのカード形式で、女性の写真を使ってください。</div>
+      <div class="result-box">4カラムのカードグリッドを追加。各カードに女性写真＋ターゲット像のテキスト。スクロールアニメーション（fade-up）付き。</div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">3</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Section</span>
+      <p class="step__title">「AIラボが選ばれる理由」セクション追加</p>
+      <div class="prompt-box">SHElikesの「選ばれる理由」のようなセクションを追加してください。矢印型のステップヘッダーで1〜4の順番で表示。内容：①生徒が運営に携わっている ②実践的 ③コミュニティ ④実績あり</div>
+      <div class="result-box">clip-path を使った矢印型のSTEP1〜4ヘッダー付きセクションを生成。各ステップに説明文と写真エリア。</div>
+    </div>
+  </div>
+
+  <!-- STEP 4 -->
+  <div class="step step--pink">
+    <div class="step__num-col">
+      <div class="step__num">4</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Section</span>
+      <p class="step__title">「AIラボで学ぶと叶う未来」セクション追加＆再デザイン</p>
+      <div class="prompt-box">「自分の事業をお持ちの方」と「誰かをサポートしたい方」の2パターンの未来を伝えるセクションを追加してください。<br><br>【再デザイン時】SHElikesのように、ピンク背景の上に白いボックスを置いて、右側に四角い画像を2枚縦に並べてください。丸い画像じゃなくて四角にしてください。</div>
+      <div class="result-box">ピンク／ティール背景のブロックにそれぞれ白カードを配置。カード内に見出し＋3つの項目（大見出し＋補足テキスト）、右側に正方形トリミングの写真2枚を縦並びで配置。SHElikes風のレイアウトを実現。</div>
+    </div>
+  </div>
+
+  <!-- STEP 5 -->
+  <div class="step step--orange">
+    <div class="step__num-col">
+      <div class="step__num">5</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Design</span>
+      <p class="step__title">コースカードのカラーを4色に変更</p>
+      <div class="prompt-box">コースの「詳細はこちら」ボタンの色を変えてください。<br>発信強化→オレンジ／仕組み化→緑／クリエイター→ピンク／業務効率化→青</div>
+      <div class="result-box">4つのコースカテゴリーをそれぞれ異なる色で差別化。CSS変数 --cat-color を使って各カードの座布団色を制御。
+        <div class="chips" style="margin-top:10px;">
+          <span class="chip" style="background:#f5873a;">発信強化</span>
+          <span class="chip" style="background:#4caf78;">仕組み化</span>
+          <span class="chip" style="background:#e8829a;">クリエイター</span>
+          <span class="chip" style="background:#4a90d9;">業務効率化</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">6</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Content</span>
+      <p class="step__title">ALCポータルを読み込んで各コース詳細ページを生成</p>
+      <div class="prompt-box">ALCのポータルサイトを見に行って、発信強化・仕組み化・クリエイター・業務効率化の各コースに実際のメンバーとリンクを入れてください。（URL: https://gokigen-design.github.io/alc-meeting/）</div>
+      <div class="result-box">AIがポータルサイトを自動で読み取り、講師名・コース名・リンクを抽出。4つのコース詳細ページ（course-hatsusin.html 等）を実際のコンテンツで一括更新。</div>
+    </div>
+  </div>
+
+  <!-- STEP 7 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">7</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Content</span>
+      <p class="step__title">全コースの詳細内容を最新情報に更新</p>
+      <div class="prompt-box">こちらが実際に今決まっているコースの詳細です。それぞれをコース一覧から遷移した先のカードの中に入れてください。（発信強化8コース／仕組み化4コース／クリエイター4コース／業務効率化3コース分のURL・講師名を一覧で提供）</div>
+      <div class="result-box">4ページ合計19コースのカードを一括更新。複数リンクを持つコースは2ボタン表示、コラボコースは2人の顔写真を重ねて表示。リンク準備中のコースは「近日公開予定」タグを表示。</div>
+    </div>
+  </div>
+
+  <!-- STEP 8 -->
+  <div class="step step--pink">
+    <div class="step__num-col">
+      <div class="step__num">8</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Section</span>
+      <p class="step__title">「AIでこんなものが作れる」ギャラリー追加</p>
+      <div class="prompt-box">mihonn_1から六までの6枚の画像をフォルダに入れました。「こんなものが作れます」の6つのセクションに入れておいて</div>
+      <div class="result-box">グレーのプレースホルダー11枚のギャラリーを、実際の成果物モックアップ画像6枚に入れ替え。グリッドを4カラム複雑レイアウト→3カラム均等レイアウトにシンプル化。LP・会員サイト・議事録・ダッシュボード等が表示される。</div>
+    </div>
+  </div>
+
+  <!-- STEP 9 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">9</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Feature</span>
+      <p class="step__title">FIRST STEPバナーをコース一覧上部に追加</p>
+      <div class="prompt-box">最初の「Claudeコード導入」というものだけ、ちょっと目立つような感じで置いておいてください。</div>
+      <div class="result-box">コース一覧の上部にティール色の横長バナーを追加。「FIRST STEP」バッジ＋タイトル＋「詳細を見る」ボタンの横並びレイアウト。4つのカテゴリーカードと視覚的に差別化。</div>
+      <a href="https://alc-front-courses.vercel.app/course-cc-experience.html" target="_blank" class="step__link">CC感動体験ページ</a>
+    </div>
+  </div>
+
+  <!-- STEP 10 -->
+  <div class="step">
+    <div class="step__num-col">
+      <div class="step__num">10</div>
+      <div class="step__line"></div>
+    </div>
+    <div class="step__card">
+      <span class="step__label">Arrange</span>
+      <p class="step__title">コース整理・コラボカード統合</p>
+      <div class="prompt-box">きこさんのLPは二つともクリエイターのところに入れて。ちゃかなさんとゆみちゃんのObsidianは二人でコラボなので1枚にまとめて。</div>
+      <div class="result-box">発信強化コースからきこさんのLP2枚を削除（クリエイターコースに集約）。ちゃかなさん・ゆみちゃんの別々カード→1枚のコラボカード（2人の顔写真を重ねて表示）に統合。発信強化コースは8枚→5枚にスッキリ整理。</div>
+    </div>
+  </div>
+
+</div><!-- /timeline -->
+
+<!-- SUMMARY TABLE -->
+<div class="summary">
+  <h2>制作でよく使った指示のパターン</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>指示の種類</th>
+        <th>具体的な言い方の例</th>
+        <th>AIがやること</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>モデリング</td>
+        <td>「SHElikesのこのセクションみたいにして」</td>
+        <td>参考サイトのレイアウト・デザインを解析して再現</td>
+      </tr>
+      <tr>
+        <td>スクリーンショット共有</td>
+        <td>（画像を貼って）「これと同じ感じで」</td>
+        <td>画像を読み取り、構成・色・レイアウトを再現</td>
+      </tr>
+      <tr>
+        <td>非表示</td>
+        <td>「〇〇のセクションは一旦非表示で」</td>
+        <td>削除せずに display:none で隠す（後から復活可能）</td>
+      </tr>
+      <tr>
+        <td>データ読み込み</td>
+        <td>「このURLを見に行って情報を入れて」</td>
+        <td>外部サイトにアクセスし、コンテンツを自動抽出・反映</td>
+      </tr>
+      <tr>
+        <td>色指定</td>
+        <td>「発信強化はオレンジ、仕組み化は緑で」</td>
+        <td>CSS変数を設定し、関連要素をすべて一括変更</td>
+      </tr>
+      <tr>
+        <td>プレビュー確認</td>
+        <td>「イメージできないのでプレビューで見せて」</td>
+        <td>ローカルサーバーを起動してスクリーンショットを提示</td>
+      </tr>
+      <tr>
+        <td>修正・訂正</td>
+        <td>「仕組み化じゃなくて業務効率化の方だった！」</td>
+        <td>誤った変更を戻し、正しい場所に再適用</td>
+      </tr>
+      <tr>
+        <td>画像追加</td>
+        <td>「フォルダに入れたので〇〇に入れて」</td>
+        <td>ファイルを検出し、HTMLに画像タグを自動挿入</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <strong>AI LABO LP</strong> — 完成ページ：
+  <a href="https://gokigen-design.github.io/ai-school-lp/" target="_blank" style="color:#7dd9d9;">https://gokigen-design.github.io/ai-school-lp/</a><br>
+  <span style="font-size:12px; margin-top:6px; display:block;">制作ツール：Claude Code（Anthropic）/ GitHub Pages</span>
+</div>
+
+</body>
+</html>
